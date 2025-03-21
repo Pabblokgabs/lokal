@@ -1,12 +1,16 @@
 export const spot = [
 	{
+		modelType: "spot",
 		name: "Urban Café",
 		ownerId: "65f1a6cfa2b4c8e9b2d1a001",
 		plan: "premium",
 		isVerified: true,
 		isOnline: true,
 		photos: ["https://example.com/photo1.jpg"],
-		operationTime: ["08:00 AM - 10:00 PM"],
+		operationTime: [
+			{ days: "Mon-Fri", time: "06:00 AM - 10:00 PM" },
+			{ days: "Sat & Sun", time: "06:00 AM - 17:00 PM" },
+		],
 		rating: 4.5,
 		reviews: [],
 		description: "A cozy café with a great selection of artisan coffee.",
@@ -18,18 +22,25 @@ export const spot = [
 		city: "New York",
 
 		followers: [],
-		links: [{ platform: "instagram", url: "https://instagram.com/urbancafe" }],
+		links: [
+			{ platform: "instagram", url: "https://instagram.com/urbancafe" },
+			{ platform: "facebook", url: "https://facebook.com/elitegym" },
+		],
 		gender: "any",
 		preferredAge: "18-35",
 	},
 	{
+		modelType: "spot",
 		name: "Elite Gym",
 		ownerId: "65f1a6cfa2b4c8e9b2d1a002",
 		plan: "enterprise",
 		isVerified: true,
 		isOnline: false,
 		photos: ["https://example.com/photo2.jpg"],
-		operationTime: ["06:00 AM - 10:00 PM"],
+		operationTime: [
+			{ days: "Mon-Fri", time: "06:00 AM - 10:00 PM" },
+			{ days: "Sat & Sun", time: "06:00 AM - 17:00 PM" },
+		],
 		rating: 4.9,
 		reviews: [],
 		description: "State-of-the-art fitness center with expert trainers.",
@@ -49,6 +60,7 @@ export const spot = [
 		preferredAge: "18-50",
 	},
 	{
+		modelType: "spot",
 		name: "Night Owl Club",
 		ownerId: "65f1a6cfa2b4c8e9b2d1a003",
 		plan: "basic",
@@ -72,6 +84,7 @@ export const spot = [
 		preferredAge: "21-40",
 	},
 	{
+		modelType: "spot",
 		name: "Zen Spa",
 		ownerId: "65f1a6cfa2b4c8e9b2d1a004",
 		plan: "premium",
@@ -96,6 +109,7 @@ export const spot = [
 	},
 
 	{
+		modelType: "spot",
 		name: "Street Art Hub",
 		ownerId: "65f1a6cfa2b4c8e9b2d1a005",
 		plan: "basic",
@@ -122,10 +136,12 @@ export const spot = [
 
 export const event = [
 	{
+		modelType: "event",
 		spotId: "65f1b2cfa2b4c8e9b2d1a001",
+		eventId: "65f1b2cfa2b4c8e9b2d1a001",
 		description: "Live jazz night with local artists.",
 		media: ["https://example.com/event1.jpg"],
-		title: "Jazz Night",
+		name: "Jazz Night",
 		date: "2025-03-15",
 		time: "08:00 PM",
 		eventStart: "2025-03-15T20:00:00Z",
@@ -136,10 +152,12 @@ export const event = [
 		instructions: ["No outside food or drinks"],
 	},
 	{
+		modelType: "event",
 		spotId: "65f1b2cfa2b4c8e9b2d1a002",
+		eventId: "65f1b2cfa2b4c8e9b2d1a002",
 		description: "Morning yoga session at the park.",
 		media: ["https://example.com/event2.jpg"],
-		title: "Sunrise Yoga",
+		name: "Sunrise Yoga",
 		date: "2025-03-20",
 		time: "06:00 AM",
 		eventStart: "2025-03-20T06:00:00Z",
@@ -150,10 +168,12 @@ export const event = [
 	},
 
 	{
+		modelType: "event",
 		spotId: "65f1b2cfa2b4c8e9b2d1a003",
+		eventId: "65f1b2cfa2b4c8e9b2d1a003",
 		description: "Art gallery opening night.",
 		media: ["https://example.com/event3.jpg"],
-		title: "Abstract Expression",
+		name: "Abstract Expression",
 		date: "2025-04-05",
 		time: "07:00 PM",
 		eventStart: "2025-04-05T19:00:00Z",
@@ -161,5 +181,221 @@ export const event = [
 		entrance: "free",
 		reactions: [],
 		instructions: ["Dress in smart casual attire"],
+	},
+];
+
+export const reviews = [
+	{
+		reviewId: "lkhgvmkoiuhjbnmsdfghjkhjbnkjhb",
+		userImage: "",
+		userName: "pabblo kgabs",
+		message:
+			"Dress in smart casual attire, Dress in smart casual attire, Dress in smart casual attire. Dress in smart casual attire",
+		ratings: 5.0,
+		createdAt: "50 min ago",
+		reviewImages: [],
+	},
+	{
+		reviewId: "lkhgvmkoiuhjbnmklaesrytjnbjbnkjhb",
+		userImage: "",
+		userName: "pabblo kgabs",
+		message:
+			"Dress in smart casual attire, Dress in smart casual attire, Dress in smart casual attire. Dress in smart casual attire",
+		ratings: 4.0,
+		createdAt: "11 months ago",
+		reviewImages: [1],
+	},
+	{
+		reviewId: "lkhgvmkoiuwretyfhgvcjbnmklhjbnkjhb",
+		userImage: "",
+		userName: "pabblo kgabs",
+		message:
+			"Dress in smart casual attire, Dress in smart casual attire, Dress in smart casual attire. Dress in smart casual attire",
+		ratings: 5.0,
+		createdAt: "5 min ago",
+		reviewImages: [1, 2],
+	},
+	{
+		reviewId: "lkhgvmkoiuaew456ryfgdsbnmklhjbnkjhb",
+		userImage: "",
+		userName: "pabblo kgabs",
+		message:
+			"Dress in smart casual attire, Dress in smart casual attire, Dress in smart casual attire. Dress in smart casual attire",
+		ratings: 1.0,
+		createdAt: "5 weeks ago",
+		reviewImages: [1],
+	},
+	{
+		reviewId: "lkhgvmkoiew43546wyrstyqsjbnmklhjbnkjhb",
+		userImage: "",
+		userName: "pabblo kgabs",
+		message:
+			"Dress in smart casual attire, Dress in smart casual attire, Dress in smart casual attire. Dress in smart casual attire",
+		ratings: 3.0,
+		createdAt: "5 days ago",
+		reviewImages: [1, 2],
+	},
+	{
+		reviewId: "lkhgvmk86756e4rdfguhjbnmklhjbnkjhb",
+		userImage: "",
+		userName: "pabblo kgabs",
+		message:
+			"Dress in smart casual attire, Dress in smart casual attire, Dress in smart casual attire. Dress in smart casual attire",
+		ratings: 5.0,
+		createdAt: "5 months ago",
+		reviewImages: [],
+	},
+	{
+		reviewId: "lkhgvmkoi23545euthgwfjbnmklhjbnkjhb",
+		userImage: "",
+		userName: "pabblo kgabs",
+		message:
+			"Dress in smart casual attire, Dress in smart casual attire, Dress in smart casual attire. Dress in smart casual attire",
+		ratings: 5.0,
+		createdAt: "5 min ago",
+		reviewImages: [1, 2],
+	},
+	{
+		reviewId: "lkhgvmkoiuweq47uhgfqcweytjbnmklhjbnkjhb",
+		userImage: "",
+		userName: "pabblo kgabs",
+		message:
+			"Dress in smart casual attire, Dress in smart casual attire, Dress in smart casual attire. Dress in smart casual attire",
+		ratings: 3.0,
+		createdAt: "5 weeks ago",
+		reviewImages: [1, 2],
+	},
+	{
+		reviewId: "lkhgvmkoiuhjbnmklhjbnkjhb",
+		userImage: "",
+		userName: "pabblo kgabs",
+		message:
+			"Dress in smart casual attire, Dress in smart casual attire, Dress in smart casual attire. Dress in smart casual attire",
+		ratings: 4.0,
+		createdAt: "5 days ago",
+		reviewImages: [1, 2],
+	},
+	{
+		reviewId: "lkhgvmkoiuhj975853ewrygbvgtbnmklhjbnkjhb",
+		userImage: "",
+		userName: "pabblo kgabs",
+		message:
+			"Dress in smart casual attire, Dress in smart casual attire, Dress in smart casual attire. Dress in smart casual attire",
+		ratings: 4.0,
+		createdAt: "5 months ago",
+		reviewImages: [1, 2],
+	},
+];
+
+export const messages = [
+	{
+		role: "user",
+		message: "Live jazz night with local artists.",
+		time: "10:21 am",
+	},
+
+	{
+		role: "owner",
+		message:
+			"Live jazz night with local artists.Live jazz night with local artists.Live jazz night with local artists.Live jazz night with local artists.",
+		time: "10:21 am",
+	},
+
+	{
+		role: "user",
+		message:
+			"Live jazz night with local artists.Live jazz night with local artists.Live jazz night with local artists.Live jazz night with local artists.",
+		time: "10:21 am",
+	},
+
+	{
+		role: "owner",
+		message:
+			"Live jazz night with local artists.Live jazz night with local artists.Live jazz night with local artists.Live jazz night with local artists.",
+		time: "10:21 am",
+	},
+
+	{
+		role: "user",
+		message:
+			"Live jazz night with local artists.Live jazz night with local artists.Live jazz night with local artists.Live jazz night with local artists.",
+		time: "10:21 am",
+	},
+
+	{
+		role: "user",
+		message:
+			"Live jazz night with local artists.Live jazz night with local artists.Live jazz night with local artists.Live jazz night with local artists.",
+		time: "10:21 am",
+	},
+
+	{
+		role: "owner",
+		message:
+			"Live jazz night with local artists.Live jazz night with local artists.Live jazz night with local artists.Live jazz night with local artists.",
+		time: "10:21 am",
+	},
+
+	{
+		role: "user",
+		message:
+			"Live jazz night with local artists.Live jazz night with local artists.Live jazz night with local artists.Live jazz night with local artists.",
+		time: "10:21 am",
+	},
+
+	{
+		role: "owner",
+		message:
+			"Live jazz night with local artists.Live jazz night with local artists.Live jazz night with local artists.Live jazz night with local artists.",
+		time: "10:21 am",
+	},
+
+	{
+		role: "user",
+		message:
+			"Live jazz night with local artists.Live jazz night with local artists.Live jazz night with local artists.Live jazz night with local artists.",
+		time: "10:21 am",
+	},
+
+	{
+		role: "owner",
+		message:
+			"Live jazz night with local artists.Live jazz night with local artists.Live jazz night with local artists.Live jazz night with local artists.",
+		time: "10:21 am",
+	},
+
+	{
+		role: "user",
+		message:
+			"Live jazz night with local artists.Live jazz night with local artists.Live jazz night with local artists.Live jazz night with local artists.",
+		time: "10:21 am",
+	},
+
+	{
+		role: "owner",
+		message:
+			"Live jazz night with local artists.Live jazz night with local artists.Live jazz night with local artists.Live jazz night with local artists.",
+		time: "10:21 am",
+	},
+
+	{
+		role: "user",
+		message:
+			"Live jazz night with local artists.Live jazz night with local artists.Live jazz night with local artists.Live jazz night with local artists.",
+		time: "10:21 am",
+	},
+
+	{
+		role: "owner",
+		message:
+			"Live jazz night with local artists.Live jazz night with local artists.Live jazz night with local artists.Live jazz night with local artists.",
+		time: "10:21 am",
+	},
+
+	{
+		role: "user",
+		message:
+			"Live jazz night with local artists.Live jazz night with local artists.Live jazz night with local artists.Live jazz night with local artists.",
+		time: "10:21 am",
 	},
 ];

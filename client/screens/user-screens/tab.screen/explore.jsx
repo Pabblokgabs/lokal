@@ -1,56 +1,25 @@
-import {
-	View,
-	Text,
-	SafeAreaView,
-	ScrollView,
-	TextInput,
-	TouchableOpacity,
-} from "react-native";
-import React, { useState } from "react";
+import { View, Text } from "react-native";
+import React from "react";
+/* import MapView, { PROVIDER_GOOGLE } from "react-native-maps"; */
+import reusableStyles from "../../../components/reusable/styles";
 import { useTheme } from "react-native-paper";
-import { Ionicons } from "@expo/vector-icons";
-import styles from "../../../styleSheet/explore.styles";
-import ReusableStyles from "../../../components/reausable/reusableStyles";
 
-function Explore() {
-	const themeColor = useTheme().colors;
-
-	const [searchValue, setSearchValue] = useState("");
+export default function Explore() {
+	const themeColor = useTheme().colors
 
 	return (
-		<SafeAreaView>
-			<ScrollView
-				style={[
-					ReusableStyles.wrapper,
-					{ backgroundColor: themeColor.background },
-				]}
-			>
-				<View
-					style={[
-						styles.searchContainer,
-						{ backgroundColor: themeColor.secondaryBackground },
-					]}
-				>
-					<TextInput
-						placeholder="Search by event or spot name..."
-						style={[styles.textInput, { color: themeColor.text }]}
-						value={searchValue}
-						onChangeText={setSearchValue}
-					/>
-					<TouchableOpacity
-						style={[
-							styles.btn,
-							{
-								backgroundColor: themeColor.btn,
-							},
-						]}
-					>
-						<Ionicons name="search-outline" size={20} color={"white"} />
-					</TouchableOpacity>
-				</View>
-			</ScrollView>
-		</SafeAreaView>
+		<View style={reusableStyles.wrapper}>
+			<View style={{flex: 1, backgroundColor: themeColor.bg}}/>
+			{/* <MapView
+				provider={PROVIDER_GOOGLE}
+				style={{ flex: 1 }}
+				initialRegion={{
+					latitude: 37.78825,
+					longitude: -122.4324,
+					latitudeDelta: 0.0922,
+					longitudeDelta: 0.0421,
+				}}
+			/> */}
+		</View>
 	);
 }
-
-export default Explore;

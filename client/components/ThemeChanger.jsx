@@ -1,16 +1,16 @@
 import React, { useContext } from "react";
-import { Modal, Pressable, Text, TouchableOpacity, View } from "react-native";
+import { Modal, Pressable, Text, TouchableOpacity, View, Dimensions } from "react-native";
 import { useTheme } from "react-native-paper";
 
-import { SIZES } from "../constance/sizes";
 import { ThemeContext } from "../lib/ThemeContext";
-import ReusableStyles from "./reausable/reusableStyles";
+import reusableStyles from "./reusable/styles";
 
 const themes = ["dark", "light"];
 
 const ThemeChanger = ({ visible, setVisible }) => {
 	const { theme, toggleTheme } = useContext(ThemeContext);
 	const themeColor = useTheme().colors;
+	const {height, width} = Dimensions.get('window')
 
 	const handleThemeChange = (newTheme) => {
 		if (newTheme !== theme) {
@@ -23,7 +23,7 @@ const ThemeChanger = ({ visible, setVisible }) => {
 		<Modal animationType="fade" transparent={true} visible={visible}>
 			<View
 				style={[
-					ReusableStyles.wrapper,
+					reusableStyles.wrapper,
 					{
 						flexDirection: "row",
 						alignItems: "center",
@@ -37,9 +37,9 @@ const ThemeChanger = ({ visible, setVisible }) => {
 						position: "absolute",
 						top: 0,
 						left: 0,
-						height: SIZES.height,
-						width: SIZES.width,
-						backgroundColor: themeColor.background,
+						height: height,
+						width: width,
+						backgroundColor: themeColor.bg,
 						opacity: 0.5,
 					}}
 				/>
@@ -47,7 +47,7 @@ const ThemeChanger = ({ visible, setVisible }) => {
 					style={{
 						width: "80%",
 						padding: 20,
-						backgroundColor: themeColor.secondaryBackground,
+						backgroundColor: themeColor.secondBg,
 					}}
 				>
 					<Text
@@ -75,7 +75,7 @@ const ThemeChanger = ({ visible, setVisible }) => {
 									width: 15,
 									borderRadius: "50%",
 									borderWidth: 0.5,
-									borderColor: themeColor.borderColor,
+									borderColor: themeColor.border,
 									backgroundColor:
 										theme === kgabs ? themeColor.btn : "transparent",
 								}}

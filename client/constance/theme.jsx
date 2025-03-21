@@ -1,4 +1,24 @@
 export const colors = {
+	orange: "#f76b10",
+	black: "#20222c",
+	black1: "#1a1a28",
+	black2: "#3c3e47",
+	white: "#ffffff",
+	white1: "#fdfdfd",
+	blue: "#3f82f7",
+	yellow: "#fbbf47",
+	yellow1: "#e2b93b",
+	green: "#29d697",
+	green1: "#29ae61",
+	brown: "#8f3c07",
+	gray: "#f0f0ee",
+	gray1: "#e1e1e1",
+	softdark: "#7f8187",
+	blue: "#3f82f7",
+	blue1: "#2f80ec",
+	red: "#eb5757",
+
+
 	gray50: "#f9f9f9",
 	gray100: "#ececec",
 	gray150: "#F7F7F7",
@@ -12,24 +32,5 @@ export const colors = {
 	gray800: "#212121",
 	gray900: "#171717",
 	gray950: "#0d0d0d",
-	white: "#fff",
 	black: "#000",
-	red: "#EB6A58",
-	lightRed: "#EB9C9B",
-	brandpurple: "#ab68ff",
-	yellow: "#927201",
-	darkBlue: '#1877F2',
-	blue: "#426782",
-	lightBlue: "#6885C1",
-	green: "#449282",
-	lightGreen: "#72ADA1",
-};
-
-export const Theme = {
-	dark: {
-		color: "#ececec",
-	},
-	light: {
-		color: "424242",
-	},
 };

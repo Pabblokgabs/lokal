@@ -36,18 +36,19 @@ const ThemeProvider = ({ children }) => {
 		...MD3LightTheme,
 		colors: {
 			...MD3LightTheme.colors,
-			background: colors.gray150,
-			secondaryBackground: colors.white,
-			text: colors.gray800,
-			secondaryText: colors.gray600,
-			btn: colors.lightGreen,
-			link: colors.lightBlue,
-			container: colors.gray50,
-			icon: colors.gray750,
-			red: colors.lightRed,
-			secondaryIcon: colors.black,
-			borderColor: colors.gray400,
-			secondBorderColor: colors.gray600,
+			bg: "#fafafa",
+			secondBg: colors.white,
+			text: colors.gray700,
+			secondText: colors.gray700,
+			btn: colors.orange,
+			secondBtn: colors.black1,
+			cont: colors.gray,
+			icon: colors.black2,
+			red: colors.red,
+			tab: colors.white,
+			border: colors.gray1,
+			link: colors.blue,
+			red: colors.red,
 		},
 	};
 
@@ -55,18 +56,20 @@ const ThemeProvider = ({ children }) => {
 		...MD3DarkTheme,
 		colors: {
 			...MD3DarkTheme.colors,
-			background: colors.gray800,
-			secondaryBackground: colors.gray700,
-			text: colors.gray100,
-			secondaryText: colors.gray300,
-			btn: colors.green,
-			link: colors.darkBlue,
-			container: colors.gray750,
-			icon: colors.gray200,
+			bg: colors.gray900,
+			secondBg: colors.gray800,
+			text: colors.gray50,
+			secondText: colors.gray300,
+			btn: colors.orange,
+			secondBtn: colors.black1,
+			cont: colors.gray750,
+			icon: colors.gray100,
 			red: colors.red,
-			secondaryIcon: colors.black,
-			borderColor: colors.gray600,
-			secondBorderColor: colors.gray300,
+			tab: colors.gray900,
+			tabBrd: colors.gray600,
+			border: colors.gray600,
+			link: colors.blue,
+			red: colors.red,
 		},
 	};
 
@@ -84,7 +87,9 @@ const ThemeProvider = ({ children }) => {
 	if (loading) return null;
 
 	return (
-		<ThemeContext.Provider value={{ theme, toggleTheme, systemTheme, setTheme }}>
+		<ThemeContext.Provider
+			value={{ theme, toggleTheme, systemTheme, setTheme }}
+		>
 			<PaperProvider theme={theme === "dark" ? md3DarkTheme : md3LightTheme}>
 				{children}
 			</PaperProvider>

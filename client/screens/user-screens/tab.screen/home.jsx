@@ -1,243 +1,217 @@
 import {
 	View,
-	TouchableOpacity,
 	Text,
-	Pressable,
 	ScrollView,
-	FlatList,
+	Image,
+	Pressable,
 	VirtualizedList,
 	Dimensions,
+	FlatList,
 } from "react-native";
+import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
-import React, { useState } from "react";
 import { useTheme } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
-import { Feather, Ionicons } from "@expo/vector-icons";
-import ReusableStyles from "../../../components/reausable/reusableStyles";
-import Preferences from "../../../components/modal/preferences.modal";
+import { AntDesign, Ionicons, MaterialIcons } from "@expo/vector-icons";
+import reusableStyles from "../../../components/reusable/styles";
+import { recommended } from "../../../lib/options";
 import TopBar from "../../../components/topBar";
-import Notification from "../../../components/modal/notification.model";
-import RefDisplay from "../../../components/home/reference.display";
-import { data } from "../../../lib/options";
-import ReusableTile from "../../../components/reausable/Reusable.tile";
+import Preferences from "../../../components/user/preference";
+import PopularTile from "../../../components/user/popular.tile";
 import { event, spot } from "../../../lib/dommyData";
+import RecommendedSpot from "../../../components/user/recommended.spot";
+import MustKnowSpot from "../../../components/user/must.know.spot";
 
 function Home() {
 	const themeColor = useTheme().colors;
 	const navigation = useNavigation();
 	const { width } = Dimensions.get("window");
 
-	const [ads, setAds] = useState(true);
-	const display = event[0];
-
-	const [preferencesVisible, setPreferencesVisible] = useState(false);
-	const [notificationVisible, setNotificationVisible] = useState(false);
-
 	return (
-		<SafeAreaView>
-			<Notification
-				visible={notificationVisible}
-				setVisible={setNotificationVisible}
-			/>
+		<SafeAreaView style={{ flex: 1 }}>
 			<View
 				style={[
-					ReusableStyles.wrapper,
-					{ backgroundColor: themeColor.background },
+					reusableStyles.wrapper,
+					{ backgroundColor: themeColor.bg, paddingHorizontal: 15 },
 				]}
 			>
-				<Preferences
-					visible={preferencesVisible}
-					setVisible={setPreferencesVisible}
-				/>
-				<TopBar
-					text={"Lokal"}
-					name1={"notifications-outline"}
-					name2={"search-outline"}
-					onPress2={() => navigation.navigate("search")}
-					onPress1={() => setNotificationVisible(true)}
-				/>
 				<ScrollView showsVerticalScrollIndicator={false}>
-					{ads && (
-						<>
-							<View style={{ height: 20 }} />
-							<View
-								style={{
-									padding: 15,
-									width: "100%",
-									flexDirectio: "column",
-									gap: 10,
-									backgroundColor: themeColor.secondaryBackground,
-									borderRadius: 10,
-								}}
+					<View style={{ height: 10 }} />
+
+					<View
+						style={{
+							flexDirection: "row",
+							alignItems: "center",
+							justifyContent: "space-between",
+						}}
+					>
+						<View
+							style={{
+								flexDirection: "column",
+								gap: 5,
+							}}
+						>
+							<Text
+								style={[reusableStyles.text, { color: themeColor.secondText }]}
 							>
-								<View style={{ flexDirection: "row", alignContent: "center" }}>
-									<Text
-										style={[
-											ReusableStyles.secHeader,
-											{ color: themeColor.text, flex: 1 },
-										]}
-									>
-										Want to cash in some points!
-									</Text>
-									<TouchableOpacity
-										onPress={() => setAds(false)}
-										style={{ marginTop: -5 }}
-									>
-										<Ionicons
-											name="close"
-											size={24}
-											color={themeColor.icon}
-											style={{ opacity: 0.5 }}
-										/>
-									</TouchableOpacity>
-								</View>
+								Current location
+							</Text>
+							<View
+								style={{ flexDirection: "row", alignItems: "center", gap: 5 }}
+							>
+								<Ionicons name="location" size={22} color={themeColor.btn} />
 								<Text
 									style={[
-										ReusableStyles.secondText,
-										{ color: themeColor.secondaryText, flex: 1 },
+										reusableStyles.header,
+										{ color: themeColor.text, fontWeight: "semibold" },
 									]}
 								>
-									Press the "Generate Link" below to generate your link. Every
-									spot registered through your link, you cash in 10Points
+									Tafelkop, RSA
 								</Text>
 							</View>
-						</>
-					)}
+						</View>
 
-					<View style={{ height: ads ? 25 : 0 }} />
+						<View
+							style={{ flexDirection: "row", alignItems: "center", gap: 20 }}
+						>
+							<Pressable
+								style={{
+									padding: 10,
+									borderRadius: "50%",
+									backgroundColor: themeColor.cont,
+								}}
+							>
+								<Ionicons
+									name="notifications"
+									size={24}
+									color={themeColor.icon}
+								/>
+							</Pressable>
 
-					<TopBar text={"Preferences"} />
+							<Image
+								source={require("../../../assets/avatar/1.svg")}
+								style={{
+									height: 45,
+									width: 45,
+									borderRadius: "50%",
+									backgroundColor: themeColor.cont,
+								}}
+							/>
+						</View>
+					</View>
+
+					<View
+						style={{
+							flexDirection: "row",
+							alignItems: "center",
+							height: 45,
+							marginVertical: 30,
+							gap: 10,
+						}}
+					>
+						<Pressable
+							onPress={() => navigation.navigate("search")}
+							style={{
+								flex: 1,
+								borderRadius: 10,
+								borderWidth: 0.5,
+								borderColor: themeColor.border,
+								height: "100%",
+								padding: 15,
+								flexDirection: "row",
+								alignItems: "center",
+								gap: 10,
+								backgroundColor: themeColor.secondBg,
+							}}
+						>
+							<AntDesign name="search1" size={24} color={themeColor.btn} />
+							<Text
+								style={[reusableStyles.text, { color: themeColor.secondText }]}
+							>
+								Search Spot, Events
+							</Text>
+						</Pressable>
+						<Pressable
+							style={{
+								backgroundColor: themeColor.btn,
+								justifyContent: "center",
+								alignItems: "center",
+								paddingHorizontal: 15,
+								height: "100%",
+								borderRadius: 10,
+							}}
+						>
+							<MaterialIcons name="filter-list" size={24} color={"white"} />
+						</Pressable>
+					</View>
+
+					<View
+						style={{
+							flexDirection: "column",
+							padding: 10,
+							gap: 10,
+							backgroundColor: themeColor.secondBg,
+							borderRadius: 10,
+						}}
+					>
+						<View>
+							<Text style={[reusableStyles.text, { color: themeColor.text }]}>
+								Want to cash in some POINTS? Invite spot owner, every spot
+								registered through your link you get 10 Points. Press the below
+								links to get started start
+							</Text>
+						</View>
+						<View style={{ flexDirection: "row", justifyContent: "center" }}>
+							<Pressable
+								style={{
+									borderBottomColor: themeColor.link,
+									borderBottomWidth: 0.5,
+								}}
+							>
+								<Text style={{ color: themeColor.link }}>Generate link</Text>
+							</Pressable>
+						</View>
+					</View>
+
+					<TopBar
+						fontWeight={"600"}
+						isArrow={false}
+						title={"Preferences"}
+						textAlign={"left"}
+						py={20}
+						I_icon={"list"}
+						I_press={() => navigation.navigate("preference")}
+					/>
 
 					<VirtualizedList
-						data={data}
+						data={recommended}
 						horizontal
 						keyExtractor={(item) => item.label}
 						showsHorizontalScrollIndicator={false}
 						getItemCount={(data) => data.length}
 						getItem={(data, index) => data[index]}
-						renderItem={({ item, index }) => (
-							<View style={{ marginRight: 10 }}>
-								<RefDisplay data={item} color={themeColor.text} />
+						renderItem={({ item }) => (
+							<View style={{ marginRight: 15 }}>
+								<Preferences item={item} />
 							</View>
 						)}
 					/>
 
-					<View style={{ height: 20 }} />
+					<View style={{ height: 40 }} />
 
-					{display ? (
-						<View
-							style={{
-								padding: 15,
-								width: "100%",
-								flexDirectio: "column",
-								gap: 10,
-								backgroundColor: themeColor.secondaryBackground,
-								borderRadius: 10,
-							}}
-						>
-							<Text
-								style={[
-									ReusableStyles.secondText,
-									{
-										color: themeColor.text,
-										padding: 5,
-										marginBottom: 20,
-										backgroundColor: themeColor.red,
-									},
-								]}
-							>
-								CLEAR YOUR SCHEDULE FOR THE UPCOMING EVENT
-							</Text>
-							<View style={{ flexDirection: "row", gap: 15 }}>
-								<View style={{ flex: 1, flexDirection: "column", gap: 10 }}>
-									<Text
-										style={[
-											ReusableStyles.secHeader,
-											{ color: themeColor.text },
-										]}
-									>
-										{display.title}
-									</Text>
+					<MustKnowSpot />
 
-									<Text
-										style={[
-											ReusableStyles.text,
-											{ color: themeColor.secondaryText },
-										]}
-									>
-										One of the events you liked is in 5 day time
-									</Text>
-								</View>
-								<View
-									style={{
-										flexDirection: "row",
-										alignItems: "center",
-										justifyContent: "center",
-									}}
-								>
-									<TouchableOpacity
-										onPress={() =>
-											navigation.navigate("post-details", { display })
-										}
-										style={{
-											paddingHorizontal: 10,
-											paddingVertical: 15,
-											borderRadius: 10,
-											borderWidth: 1,
-											borderColor: themeColor.borderColor,
-											backgroundColor: themeColor.background,
-										}}
-									>
-										<Text
-											style={[
-												ReusableStyles.text,
-												{
-													color: themeColor.text,
-													marginRight: 20,
-													marginLeft: 20,
-												},
-											]}
-										>
-											View
-										</Text>
-									</TouchableOpacity>
-								</View>
-							</View>
+					<View style={{ height: 10 }} />
 
-							<View
-								style={{
-									flexDirection: "row",
-									alignItems: "center",
-									justifyContent: "center",
-								}}
-							>
-								<Pressable
-									onPress={() => navigation.navigate("Favorites")}
-									style={{
-										borderBottomWidth: 0.5,
-										borderBottomColor: themeColor.secondBorderColor,
-									}}
-								>
-									<Text style={{ marginTop: 20, color: themeColor.text }}>
-										View My Favorites
-									</Text>
-								</Pressable>
-							</View>
-						</View>
-					) : (
-						""
-					)}
-
-					<View style={{ height: 20 }} />
-
-					<TopBar text={"Recommendations"} textAlign={"start"}>
-						<Feather
-							name="list"
-							size={24}
-							color={themeColor.icon}
-							onPress={() => navigation.navigate("recommendations")}
-						/>
-					</TopBar>
+					<TopBar
+						fontWeight={"600"}
+						isArrow={false}
+						title={"Recommended Spot"}
+						textAlign={"left"}
+						py={20}
+						I_icon={"list"}
+						I_press={() => navigation.navigate("")}
+					/>
 
 					<FlatList
 						data={spot}
@@ -246,34 +220,40 @@ function Home() {
 						showsHorizontalScrollIndicator={false}
 						renderItem={(item) => (
 							<View
-								style={{ marginRight: 10, width: width <= 375 ? 320 : 350 }}
+								style={{ marginRight: 15, width: width <= 375 ? 320 : 350 }}
 							>
-								<ReusableTile
-									data={item}
-									onPress={() => navigation.navigate("spot-details", { item })}
-								/>
+								<RecommendedSpot data={item.item} />
 							</View>
 						)}
 					/>
-					<View style={{ height: 20 }} />
-					<View
-						style={{
-							flexDirection: "column",
-							gap: 10,
-							alignItems: "center",
-							paddingTop: 50,
-							paddingBottom: 150,
-						}}
-					>
-						<Text style={[ReusableStyles.header, { color: themeColor.text }]}>
-							Lokal
-						</Text>
-						<Text
-							style={[ReusableStyles.text, { color: themeColor.secondaryText }]}
-						>
-							Dicover. Explore. Lokal
-						</Text>
-					</View>
+
+					<View style={{ height: 10 }} />
+
+					<TopBar
+						fontWeight={"600"}
+						isArrow={false}
+						title={"Popular Events"}
+						textAlign={"left"}
+						py={20}
+						I_icon={"list"}
+						I_press={() => navigation.navigate("")}
+					/>
+
+					<FlatList
+						data={event}
+						horizontal
+						keyExtractor={(item) => item.spotId}
+						showsHorizontalScrollIndicator={false}
+						renderItem={({item}) => (
+							<View
+								style={{ marginRight: 15, width: width <= 375 ? 320 : 350 }}
+							>
+								<PopularTile item={item} />
+							</View>
+						)}
+					/>
+
+					<View style={{ height: 100 }} />
 				</ScrollView>
 			</View>
 		</SafeAreaView>

@@ -23,12 +23,19 @@ const Tab = createBottomTabNavigator();
 
 const tabBarStyles = {
 	padding: 20,
+	paddingBottom: 30,
 	height: 80,
 	position: "absolute",
 	bottom: 0,
 	left: 0,
 	right: 0,
-	borderTopWidth: 0.5,
+	borderTopLeftRadius: 15,
+	borderTopRightRadius: 15,
+	shadowOffset: { width: 0, height: -2 },
+	shadowOpacity: 0.1,
+	shadowRadius: 5,
+	elevation: 1,
+	borderTopWidth: 1,
 };
 
 const BottomTabNavigator = () => {
@@ -49,9 +56,9 @@ const BottomTabNavigator = () => {
 				options={{
 					tabBarStyle: {
 						...tabBarStyles,
-						/* backgroundColor: themecolor.secondaryBackground, */
-						backgroundColor: themecolor.background,
-						borderTopColor: themecolor.borderColor
+						backgroundColor: themecolor.tab,
+						shadowColor: themecolor.tabBrd,
+						borderTopColor: themecolor.tabBrd
 					},
 					tabBarShowLabel: false,
 					headerShown: false,
@@ -59,7 +66,7 @@ const BottomTabNavigator = () => {
 						<Ionicons
 							name={focused ? "grid" : "grid-outline"}
 							color={focused ? themecolor.btn : themecolor.icon}
-							size={22}
+							size={30}
 						/>
 					),
 				}}
@@ -71,17 +78,17 @@ const BottomTabNavigator = () => {
 				options={{
 					tabBarStyle: {
 						...tabBarStyles,
-						/* backgroundColor: themecolor.secondaryBackground, */
-						backgroundColor: themecolor.background,
-						borderTopColor: themecolor.borderColor
+						backgroundColor: themecolor.tab,
+						shadowColor: themecolor.tabBrd,
+						borderTopColor: themecolor.tabBrd
 					},
 					tabBarShowLabel: false,
 					headerShown: false,
 					tabBarIcon: ({ focused }) => (
 						<Ionicons
-							name={focused ? "compass" : "compass-outline"}
+							name={focused ? "location" : "location-outline"}
 							color={focused ? themecolor.btn : themecolor.icon}
-							size={26}
+							size={30}
 						/>
 					),
 				}}
@@ -93,9 +100,9 @@ const BottomTabNavigator = () => {
 				options={{
 					tabBarStyle: {
 						...tabBarStyles,
-						/* backgroundColor: themecolor.secondaryBackground, */
-						backgroundColor: themecolor.background,
-						borderTopColor: themecolor.borderColor
+						backgroundColor: themecolor.tab,
+						shadowColor: themecolor.tabBrd,
+						borderTopColor: themecolor.tabBrd
 					},
 					tabBarShowLabel: false,
 					headerShown: false,
@@ -103,7 +110,7 @@ const BottomTabNavigator = () => {
 						<Ionicons
 							name={focused ? "heart" : "heart-outline"}
 							color={focused ? themecolor.btn : themecolor.icon}
-							size={26}
+							size={30}
 						/>
 					),
 				}}
@@ -115,9 +122,9 @@ const BottomTabNavigator = () => {
 				options={{
 					tabBarStyle: {
 						...tabBarStyles,
-						/* backgroundColor: themecolor.secondaryBackground, */
-						backgroundColor: themecolor.background,
-						borderTopColor: themecolor.borderColor
+						backgroundColor: themecolor.tab,
+						shadowColor: themecolor.tabBrd,
+						borderTopColor: themecolor.tabBrd
 					},
 					tabBarShowLabel: false,
 					headerShown: false,
@@ -125,7 +132,7 @@ const BottomTabNavigator = () => {
 						<Ionicons
 							name={focused ? "person" : "person-outline"}
 							color={focused ? themecolor.btn : themecolor.icon}
-							size={26}
+							size={30}
 						/>
 					),
 				}}

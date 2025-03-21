@@ -1,117 +1,108 @@
-import { View, Text, TouchableOpacity } from "react-native";
+import { View, Text, Platform, TouchableOpacity } from "react-native";
 import React from "react";
-import { useTheme } from "react-native-paper";
-import { SIZES, TEXT } from "../constance/sizes";
 import { AntDesign, Ionicons, MaterialIcons } from "@expo/vector-icons";
-import ReusableStyles from "./reausable/reusableStyles";
+import { useTheme } from "react-native-paper";
+import reusableStyles from "./reusable/styles";
 
-function TopBar({
-	arrowName,
-	text,
-	name1,
-	onPress1,
-	name2,
-	onPress2,
-	name3,
-	onPress3,
-	textAlign,
-	arrowOnPress,
-	backgroundColor,
+const TopBar = ({
+	py,
+	arrowPress,
+	title,
 	children,
-}) {
+	textAlign,
+	I_icon,
+	I_press,
+	M_icon,
+	M_press,
+	A_icon,
+	A_press,
+	isArrow,
+	fontWeight,
+	add_icon,
+	add_press,
+}) => {
+	const backIcon = Platform.OS === "ios" ? "left" : "arrowleft";
 	const themeColor = useTheme().colors;
 
 	return (
 		<View
 			style={{
-				backgroundColor: backgroundColor ? backgroundColor : "transparent",
-				height: 60,
 				flexDirection: "row",
-				justifyContent: "center",
+				alignItems: "center",
+				paddingVertical: py,
 			}}
 		>
+			{isArrow && (
+				<TouchableOpacity onPress={arrowPress}>
+					<AntDesign name={backIcon} size={24} color={themeColor.icon} />
+				</TouchableOpacity>
+			)}
+
 			<View
 				style={{
-					width: "100%",
+					flex: 1,
 					flexDirection: "row",
 					alignItems: "center",
-					justifyContent: "space-between",
-					gap: 20,
+					marginLeft: isArrow && 15,
 				}}
 			>
-				<View
-					style={{
-						flexDirection: "row",
-						flex: 1,
-						alignItems: "center",
-					}}
-				>
-					<AntDesign
-						name={arrowName}
-						size={24}
-						color={themeColor.icon}
-						style={{ marginRight: arrowName ? 15 : 0 }}
-						onPress={arrowOnPress}
-					/>
+				{title ? (
 					<Text
 						style={[
-							ReusableStyles.header,
+							reusableStyles.header,
 							{
 								color: themeColor.text,
-								flex: 1,
-								textAlign: textAlign,
+								fontSize: 22,
+								fontWeight: fontWeight ? fontWeight : "700",
+								textAlign: textAlign
+									? textAlign
+									: Platform.OS === "ios"
+									? "center"
+									: "left",
 							},
 						]}
 					>
-						{text}
+						{title}
 					</Text>
-				</View>
-				<View style={{ flexDirection: "row", alignItems: "center" }}>
-					<TouchableOpacity onPress={onPress1} style={{ position: "relative" }}>
-						<Ionicons
-							name={name1}
-							size={24}
-							color={themeColor.icon}
-							style={{ marginRight: (name1 && name2) || name3 ? 25 : 0 }}
-						/>
-						{name1 && (
-							<Text
-								style={{
-									color: "red",
-									position: "absolute",
-									left: 10,
-									bottom: 10,
-									fontSize: TEXT.xxlarge,
-									fontWeight: "900",
-								}}
-							>
-								.
-							</Text>
-						)}
-					</TouchableOpacity>
-					<TouchableOpacity onPress={onPress2}>
-						{children ? (
-							children
-						) : (
-							<Ionicons
-								name={name2}
-								size={24}
-								color={themeColor.icon}
-								style={{ marginRight: name2 && name3 ? 25 : 0 }}
-							/>
-						)}
-					</TouchableOpacity>
-					<TouchableOpacity onPress={onPress3}>
-						{name3 === "sort" ? (
-							<MaterialIcons name={name3} size={24} color={themeColor.icon} />
-						) : (
-							<Ionicons name={name3} size={24} color={themeColor.icon} />
-						)}
-					</TouchableOpacity>
-				</View>
+				) : (
+					children
+				)}
+			</View>
+
+			<View style={{ flexDirection: "row", alignItems: "center" }}>
+				<TouchableOpacity onPress={I_press}>
+					<Ionicons
+						name={I_icon}
+						size={24}
+						color={themeColor.icon}
+						style={{ marginRight: I_icon && (M_icon || A_icon) ? 15 : 0 }}
+					/>
+				</TouchableOpacity>
+
+				<TouchableOpacity onPress={M_press}>
+					<MaterialIcons name={M_icon} size={24} color={themeColor.icon} />
+				</TouchableOpacity>
+
+				<TouchableOpacity onPress={A_press}>
+					<AntDesign
+						name={A_icon}
+						size={24}
+						color={themeColor.icon}
+						style={{ marginLeft: A_icon && M_icon ? 15 : 0 }}
+					/>
+				</TouchableOpacity>
+
+				<TouchableOpacity onPress={add_press}>
+					<Ionicons
+						name={add_icon}
+						size={24}
+						color={themeColor.icon}
+						style={{ marginLeft: add_icon ? 15 : 0 }}
+					/>
+				</TouchableOpacity>
 			</View>
 		</View>
 	);
-}
+};
 
 export default TopBar;

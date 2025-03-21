@@ -1,7 +1,6 @@
 import React from "react";
 import { Picker } from "@react-native-picker/picker";
 import { useTheme } from "react-native-paper";
-import { TEXT } from "../constance/sizes";
 
 const PickerComponent = ({ items, selectedValue, onValueChange }) => {
 	const themeColor = useTheme().colors;
@@ -14,11 +13,11 @@ const PickerComponent = ({ items, selectedValue, onValueChange }) => {
 				width: "100%",
 				height: "100%",
 				backgroundColor: "transparent",
-				color: themeColor.secondaryText,
+				color: themeColor.secondText,
 				borderColor: "transparent",
 				borderRadius: 0,
 				borderWidth: 0,
-				fontSize: TEXT.medium / 1.1,
+				fontSize: 18,
 				outlineStyle: "none",
 				shadowColor: "transparent",
 			}}

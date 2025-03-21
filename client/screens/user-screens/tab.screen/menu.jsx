@@ -1,82 +1,116 @@
-import { View, Text, Image, TouchableOpacity, ScrollView } from "react-native";
+import {
+	View,
+	Text,
+	ScrollView,
+	TouchableOpacity,
+	Image,
+	PanResponder,
+	Pressable,
+} from "react-native";
 import React, { useState } from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
 import { useTheme } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import TopBar from "../../../components/topBar";
-import ReusableStyles from "../../../components/reausable/reusableStyles";
-import styles from "../../../styleSheet/menu.styles";
+import Modal from "react-native-modal";
 import { AntDesign } from "@expo/vector-icons";
-import Settings from "../../../components/modal/settings.model";
-import Notification from "../../../components/modal/notification.model";
-import SettingsTile from "../../../components/tile/settings.tile";
-import Contact from "../../../components/contact";
+import reusableStyles from "../../../components/reusable/styles";
+import TopBar from "../../../components/topBar";
+import LinkTile from "../../../components/reusable/link.tile";
+import SettingModal from "../../../components/user/modal/setting.modal";
+import LogoutCom from "../../../components/modals/logout";
 
-function Menu() {
+export default function Menu() {
 	const themeColor = useTheme().colors;
 	const navigation = useNavigation();
 
-	const [settingsVisible, setSettingsVisible] = useState(false);
-	const [notificationVisible, setNotificationVisible] = useState(false);
-	const [contact, setContact] = useState(false);
+	const [settings, setSettings] = useState(false);
+	const [logout, setLogout] = useState(false);
+
+	const panResponder = PanResponder.create({
+		onStartShouldSetPanResponder: () => true,
+		onPanResponderMove: (evt, gestureState) => {
+			if (gestureState.dy > 20) {
+				setLogout(false);
+			}
+		},
+
+		onPanResponderRelease: () => {
+			setLogout(false);
+		},
+	});
 
 	return (
 		<SafeAreaView>
-			<Settings visible={settingsVisible} setVisible={setSettingsVisible} />
-			<Contact visible={contact} setVisible={setContact} />
+			<SettingModal visible={settings} setVisible={setSettings} />
 
-			<Notification
-				visible={notificationVisible}
-				setVisible={setNotificationVisible}
-			/>
 			<View
-				style={[
-					ReusableStyles.wrapper,
-					{ backgroundColor: themeColor.background },
-				]}
+				style={[reusableStyles.wrapper, { backgroundColor: themeColor.bg }]}
 			>
-				<TopBar
-					name1={"notifications-outline"}
-					name3={"settings-outline"}
-					onPress3={() => setSettingsVisible(true)}
-					onPress1={() => setNotificationVisible(true)}
-				/>
-				<ScrollView style={styles.container}>
+				<View style={{ paddingHorizontal: 15 }}>
+					<TopBar
+						I_icon={"notifications-outline"}
+						A_icon={"setting"}
+						py={20}
+						A_press={() => setSettings(true)}
+					/>
+				</View>
+
+				<ScrollView showsVerticalScrollIndicator={false}>
 					<TouchableOpacity
-						style={[
-							styles.accountContainer,
-							{ borderColor: themeColor.borderColor },
-						]}
-						onPress={() => navigation.navigate("profile-screen")}
+						onPress={() => navigation.navigate("profile")}
+						style={{
+							flexDirection: "row",
+							gap: 20,
+							paddingBottom: 20,
+							borderBottomWidth: 0.5,
+							borderBottomColor: themeColor.border,
+							paddingHorizontal: 15,
+						}}
 					>
 						<Image
 							source={require("../../../assets/images/img.jpg")}
-							style={styles.img}
+							style={{
+								height: 80,
+								width: 80,
+								resizeMode: "cover",
+								borderRadius: "50%",
+							}}
 						/>
-						<View style={styles.accountContainerInfo}>
-							<Text style={[ReusableStyles.header, { color: themeColor.text }]}>
+						<View
+							style={{
+								flexDirection: "column",
+								justifyContent: "center",
+								flex: 1,
+							}}
+						>
+							<Text style={[reusableStyles.header, { color: themeColor.text }]}>
 								Pabblo Kgabs
 							</Text>
 							<View>
-								<Text style={[ReusableStyles.text, { color: themeColor.text }]}>
+								<Text style={[reusableStyles.text, { color: themeColor.text }]}>
 									pabblo@kabs.com
 								</Text>
-								<View style={styles.edit}>
+								<View
+									style={{ flexDirection: "row", alignItems: "center", gap: 5 }}
+								>
 									<Text
 										style={[
-											ReusableStyles.secondText,
-											{ color: themeColor.secondaryText },
+											reusableStyles.secondText,
+											{ color: themeColor.text },
 										]}
 									>
 										Personal details
 									</Text>
 									<Text
-										style={[styles.dot, { backgroundColor: themeColor.text }]}
+										style={[
+											reusableStyles.dot,
+											{ backgroundColor: themeColor.text },
+										]}
 									></Text>
 									<Text
 										style={[
-											ReusableStyles.secondText,
-											{ color: themeColor.secondaryText },
+											reusableStyles.secondText,
+											{ color: themeColor.secondText },
 										]}
 									>
 										edit account
@@ -87,69 +121,99 @@ function Menu() {
 						</View>
 					</TouchableOpacity>
 
-					<View style={{height:20}}/>
+					<View style={{ height: 20 }} />
 
-					<SettingsTile
-						iconName={"information-circle-outline"}
-						text={"Notifications"}
-						right={"right"}
-						value={10}
-						onPress={() => {}}
-					/>
-					<SettingsTile
-						iconName={"information-circle-outline"}
-						text={"Manage history"}
-						onPress={() => {}}
-					/>
-					<SettingsTile
-						iconName={"information-circle-outline"}
-						text={"Billing & payments"}
-						onPress={() => {}}
-					/>
-					<Text
-						style={[
-							ReusableStyles.secHeader,
-							{ color: themeColor.text, marginTop: 40, marginBottom: 25 },
-						]}
-					>
-						More
-					</Text>
-					<SettingsTile
-						iconName={"help-circle-outline"}
-						text={"Help center"}
-						onPress={() => {}}
-					/>
-					<SettingsTile
-						iconName={"document-text-outline"}
-						text={"Terms of service"}
-						onPress={() => {}}
-					/>
-					<SettingsTile
-						iconName={"information-circle-outline"}
-						text={"Send Feedback"}
-						onPress={() => navigation.navigate("feedback")}
-					/>
-					<SettingsTile
-						iconName={"chatbox-ellipses-outline"}
-						text={"Contact Us"}
-						size={20}
-						onPress={() => setContact(true)}
-					/>
-					<SettingsTile
-						iconName={"share-outline"}
-						text={"Invite Friends"}
-						onPress={() => {}}
-					/>
-					<SettingsTile
-						iconName={"log-out-outline"}
-						text={"Sign out"}
-						onPress={() => {}}
-					/>
+					<View style={{ paddingHorizontal: 15 }}>
+						<LinkTile title={"Notifications"} />
+						<LinkTile title={"Manage history"} />
+						<LinkTile title={"Payment Methods"} />
+						<LinkTile title={"Followings"} />
+						<LinkTile title={"Messages"} />
+					</View>
+
+					<View style={{ paddingHorizontal: 15 }}>
+						<Text
+							style={[
+								reusableStyles.header,
+								{
+									color: themeColor.text,
+									marginTop: 20,
+									marginBottom: 15,
+									fontSize: 24,
+								},
+							]}
+						>
+							More
+						</Text>
+					</View>
+
+					<View style={{ paddingHorizontal: 15 }}>
+						<LinkTile
+							title={"Help center"}
+							I_icon={"help-circle-outline"}
+							onPress={() => navigation.navigate("help-center")}
+						/>
+						<LinkTile
+							title={"Send Feedback"}
+							I_icon={"information-circle-outline"}
+							onPress={() => navigation.navigate("feedback")}
+						/>
+						<LinkTile
+							title={"Contact Us"}
+							I_icon={"chatbox-ellipses-outline"}
+							onPress={() => navigation.navigate("contact-us")}
+						/>
+						<LinkTile title={"Privacy Policy"} A_icon={"lock"} />
+						<LinkTile title={"Invite Friends"} I_icon={"share-outline"} />
+						<LinkTile
+							title={"Sign out"}
+							I_icon={"log-out-outline"}
+							onPress={() => setLogout(true)}
+						/>
+					</View>
+
 					<View style={{ height: 100 }} />
 				</ScrollView>
 			</View>
+
+			<Modal
+				isVisible={logout}
+				onBackdropPress={() => setLogout(false)}
+				onBackButtonPress={() => setLogout(false)}
+				animationIn="slideInUp"
+				animationOut="slideOutDown"
+				swipeDirection="down"
+				onSwipeComplete={() => setLogout(false)}
+				backdropOpacity={0.5}
+				style={{ justifyContent: "flex-end", margin: 0 }}
+			>
+				<View
+					style={{
+						bottom: 0,
+						backgroundColor: themeColor.secondBg,
+						borderTopRightRadius: 15,
+						borderTopLeftRadius: 15,
+					}}
+				>
+					<View
+						style={{
+							marginTop: 10,
+							alignItems: "center",
+							justifyContent: "center",
+						}}
+					>
+						<Pressable
+							{...panResponder.panHandlers}
+							style={{
+								height: 5,
+								backgroundColor: themeColor.border,
+								width: "40%",
+							}}
+						/>
+					</View>
+					<LogoutCom isVisible={setLogout} />
+				</View>
+			</Modal>
 		</SafeAreaView>
 	);
 }
-
-export default Menu;
