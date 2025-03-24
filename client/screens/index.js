@@ -8,8 +8,11 @@ import ContactUs from "./common/contactUs";
 import SpotDetails from "./user-screens/spot.details";
 import Search from "./user-screens/search";
 import EventView from "./user-screens/event.view";
-import Message from "./common/message";
+import Inbox from "././common/inbox";
 import Notification from "./common/notification";
+import Recommended from "./user-screens/recommended";
+import Popular from "./user-screens/popular";
+import Messages from "./common/messages";
 
 export {
 	BottomTabNavigator,
@@ -22,6 +25,9 @@ export {
 	SpotDetails,
 	Search,
 	EventView,
-	Message,
-	Notification
+	Inbox,
+	Notification,
+	Popular,
+	Recommended,
+	Messages,
 };

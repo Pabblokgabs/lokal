@@ -54,8 +54,9 @@ function About() {
 						gap: 10,
 					}}
 				>
-					{data.operationTime.map((item) => (
+					{data.operationTime.map((item, index) => (
 						<View
+							key={index}
 							style={{
 								flexDirection: "row",
 								alignItems: "center",
@@ -198,7 +199,7 @@ function About() {
 						<Text
 							style={[reusableStyles.text, { color: themeColor.secondText }]}
 						>
-							Manager
+							Owner
 						</Text>
 					</View>
 				</View>

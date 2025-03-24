@@ -12,8 +12,11 @@ import {
 	SpotDetails,
 	Search,
 	EventView,
-	Message,
+	Inbox,
 	Notification,
+	Popular,
+	Recommended,
+	Messages,
 } from "../screens";
 
 const Stack = createStackNavigator();
@@ -34,8 +37,11 @@ function UserMainNavigator() {
 				<Stack.Screen name="spot-details" component={SpotDetails} />
 				<Stack.Screen name="event-view" component={EventView} />
 				<Stack.Screen name="search" component={Search} />
-				<Stack.Screen name="message" component={Message} />
+				<Stack.Screen name="messages" component={Messages} />
+				<Stack.Screen name="inbox" component={Inbox} />
 				<Stack.Screen name="notification" component={Notification} />
+				<Stack.Screen name="popular" component={Popular} />
+				<Stack.Screen name="recommended" component={Recommended} />
 			</Stack.Navigator>
 		</NavigationContainer>
 	);

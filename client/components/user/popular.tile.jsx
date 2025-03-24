@@ -13,6 +13,7 @@ const PopularTile = ({ item }) => {
 
 	return (
 		<TouchableOpacity
+			onPress={() => navigation.navigate("event-view", { item })}
 			style={{
 				flexDirection: "column",
 				gap: 10,

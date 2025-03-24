@@ -75,6 +75,7 @@ function Home() {
 							style={{ flexDirection: "row", alignItems: "center", gap: 20 }}
 						>
 							<Pressable
+								onPress={() => navigation.navigate("notification")}
 								style={{
 									padding: 10,
 									borderRadius: "50%",
@@ -88,15 +89,17 @@ function Home() {
 								/>
 							</Pressable>
 
-							<Image
-								source={require("../../../assets/avatar/1.svg")}
-								style={{
-									height: 45,
-									width: 45,
-									borderRadius: "50%",
-									backgroundColor: themeColor.cont,
-								}}
-							/>
+							<Pressable onPress={() => navigation.navigate("profile")}>
+								<Image
+									source={require("../../../assets/avatar/1.svg")}
+									style={{
+										height: 45,
+										width: 45,
+										borderRadius: "50%",
+										backgroundColor: themeColor.cont,
+									}}
+								/>
+							</Pressable>
 						</View>
 					</View>
 
@@ -210,7 +213,7 @@ function Home() {
 						textAlign={"left"}
 						py={20}
 						I_icon={"list"}
-						I_press={() => navigation.navigate("")}
+						I_press={() => navigation.navigate("recommended")}
 					/>
 
 					<FlatList
@@ -218,11 +221,11 @@ function Home() {
 						horizontal
 						keyExtractor={(item) => item.ownerId}
 						showsHorizontalScrollIndicator={false}
-						renderItem={(item) => (
+						renderItem={({ item }) => (
 							<View
 								style={{ marginRight: 15, width: width <= 375 ? 320 : 350 }}
 							>
-								<RecommendedSpot data={item.item} />
+								<RecommendedSpot item={item} />
 							</View>
 						)}
 					/>
@@ -236,7 +239,7 @@ function Home() {
 						textAlign={"left"}
 						py={20}
 						I_icon={"list"}
-						I_press={() => navigation.navigate("")}
+						I_press={() => navigation.navigate("popular")}
 					/>
 
 					<FlatList
@@ -244,7 +247,7 @@ function Home() {
 						horizontal
 						keyExtractor={(item) => item.spotId}
 						showsHorizontalScrollIndicator={false}
-						renderItem={({item}) => (
+						renderItem={({ item }) => (
 							<View
 								style={{ marginRight: 15, width: width <= 375 ? 320 : 350 }}
 							>

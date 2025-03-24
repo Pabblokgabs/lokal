@@ -128,7 +128,7 @@ export default function Menu() {
 						<LinkTile title={"Manage history"} />
 						<LinkTile title={"Payment Methods"} />
 						<LinkTile title={"Followings"} />
-						<LinkTile title={"Messages"} />
+						<LinkTile title={"Messages"} onPress={() => navigation.navigate('messages')}/>
 					</View>
 
 					<View style={{ paddingHorizontal: 15 }}>

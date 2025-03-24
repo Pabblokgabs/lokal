@@ -1,17 +1,19 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
 import React, { useEffect, useState } from "react";
 import { useTheme } from "react-native-paper";
+import { useNavigation } from "@react-navigation/native";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import reusableStyles from "../reusable/styles";
 
 const EventTile = ({ item, isLikeIcon, onEventPress }) => {
 	const themeColor = useTheme().colors;
+	const navigation = useNavigation();
 
 	const type = ["Dance", "Music"];
 
 	return (
 		<TouchableOpacity
-			onPress={onEventPress}
+			onPress={() => navigation.navigate("event-view", { item })}
 			style={{
 				padding: 10,
 				borderRadius: 10,

@@ -5,15 +5,13 @@ import { useTheme } from "react-native-paper";
 import reusableStyles from "../reusable/styles";
 import { Ionicons } from "@expo/vector-icons";
 
-function RecommendedSpot({ data, onSpotPress }) {
+function RecommendedSpot({ item, onSpotPress }) {
 	const themeColor = useTheme().colors;
 	const navigation = useNavigation();
-	// const item = data.item;
-	const item = data;
 
 	return (
 		<TouchableOpacity
-		onPress={onSpotPress}
+			onPress={() => navigation.navigate("spot-details", { item })}
 			style={{
 				flexDirection: "row",
 				gap: 10,

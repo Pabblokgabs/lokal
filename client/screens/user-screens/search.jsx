@@ -40,7 +40,7 @@ function Search() {
 	const renderItem = (item) => {
 		if (item.modelType === "spot") {
 			return (
-				<RecommendedSpot data={item} onSpotPress={() => handleSpotClick()} />
+				<RecommendedSpot item={item} onSpotPress={() => handleSpotClick()} />
 			);
 		} else if (item.modelType === "event") {
 			return <EventTile item={item} onEventPress={() => handleEventClick()} />;

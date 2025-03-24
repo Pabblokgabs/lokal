@@ -1,4 +1,4 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import { useTheme } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
@@ -10,7 +10,7 @@ const MustKnowSpot = () => {
 	const themeColor = useTheme().colors;
 	const navigation = useNavigation();
 
-	const data = spot[0];
+	const item = spot[0];
 
 	return (
 		<View style={{ flexDirection: "column", gap: 20 }}>
@@ -18,7 +18,9 @@ const MustKnowSpot = () => {
 				A MUST VISIT SPOT!
 			</Text>
 
-			<View>
+			<TouchableOpacity
+				onPress={() => navigation.navigate("spot-details", { item })}
+			>
 				<Image
 					source={require("../../assets/images/img2.jpg")}
 					style={{ height: 300, width: "100%", borderRadius: 10 }}
@@ -69,18 +71,18 @@ const MustKnowSpot = () => {
 						lineBreakMode="tail"
 						style={[reusableStyles.header, { color: themeColor.text }]}
 					>
-						{data.name}
+						{item.name}
 					</Text>
 					<Text
 						numberOfLines={1}
 						lineBreakMode="tail"
 						style={[reusableStyles.text, { color: themeColor.secondText }]}
 					>
-						{data.address}
+						{item.address}
 					</Text>
 
 					<View style={{ flexDirection: "row", gap: 10 }}>
-						{data.spotType.map((item) => (
+						{item.spotType.map((item) => (
 							<View
 								key={item}
 								style={{
@@ -108,7 +110,7 @@ const MustKnowSpot = () => {
 						))}
 					</View>
 				</View>
-			</View>
+			</TouchableOpacity>
 		</View>
 	);
 };

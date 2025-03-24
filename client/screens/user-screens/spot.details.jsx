@@ -55,6 +55,7 @@ function SpotDetails() {
 					}}
 				>
 					<TouchableOpacity
+						onPress={() => navigation.goBack()}
 						style={{
 							padding: 10,
 							alignItems: "center",
@@ -125,6 +126,7 @@ function SpotDetails() {
 					}}
 				>
 					<TouchableOpacity
+						onPress={() => navigation.goBack()}
 						style={{
 							padding: 10,
 							alignItems: "center",

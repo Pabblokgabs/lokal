@@ -55,7 +55,7 @@ function Review() {
 						<EventTile isLikeIcon={false} item={event[0]} />
 					) : type === "spot" ? (
 						<View style={{ paddingHorizontal: 15 }}>
-							<RecommendedSpot data={spot[0]} />
+							<RecommendedSpot item={spot[0]} />
 						</View>
 					) : (
 						<></>
