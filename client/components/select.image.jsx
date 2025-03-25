@@ -12,6 +12,7 @@ const SelectImage = ({
 	children,
 	text,
 	textcolor,
+	path
 }) => {
 	const themeColor = useTheme().colors;
 
@@ -20,7 +21,7 @@ const SelectImage = ({
 			title: "Select Image",
 			storageOptions: {
 				skipBackUp: true,
-				path: "images",
+				path: {path},
 			},
 		};
 

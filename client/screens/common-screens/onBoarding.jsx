@@ -99,6 +99,8 @@ const OnBoarding = () => {
 						Let's get you started
 					</Text>
 
+					<View style={{ height: 10 }} />
+
 					<Btn
 						text={"Personal Account"}
 						onPress={() => {
@@ -110,6 +112,10 @@ const OnBoarding = () => {
 						text={"Register Spot"}
 						backgroundColor={"transparent"}
 						color={themeColor.text}
+						onPress={() => {
+							setRegisterOption(false);
+							navigation.navigate("Owner-email");
+						}}
 					/>
 				</View>
 			</Modal>

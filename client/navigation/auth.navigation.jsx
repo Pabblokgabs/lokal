@@ -11,6 +11,9 @@ import {
 	SignIn,
 	SetPassword,
 	FinalStage,
+	OwnerEmail,
+	OwnerSetPassword,
+	OwnerPersonalInfo,
 } from "../screens";
 import { OnBoardingProvider } from "../lib/hooks/useSignIn";
 
@@ -24,17 +27,25 @@ function AuthNavigator() {
 					screenOptions={{ headerShown: false, animationEnabled: false }}
 				>
 					{/* Common screens auth routes */}
-					{/* <Stack.Screen name="onboarding" component={OnBoarding} />
+					<Stack.Screen name="onboarding" component={OnBoarding} />
 					<Stack.Screen name="signin" component={SignIn} />
 					<Stack.Screen name="forgot-password" component={ForgotPassword} />
-					<Stack.Screen name="reset-password" component={ResetPassword} /> */}
+					<Stack.Screen name="reset-password" component={ResetPassword} />
 
 					{/* User screens auth routes */}
-					{/* <Stack.Screen name="email" component={Email} />
-					<Stack.Screen name="personal-information" component={PersonalInfo} /> */}
+					<Stack.Screen name="email" component={Email} />
+					<Stack.Screen name="personal-information" component={PersonalInfo} />
 					<Stack.Screen name="preference" component={SelectPreferences} />
 					<Stack.Screen name="set-password" component={SetPassword} />
 					<Stack.Screen name="final-stage" component={FinalStage} />
+
+					{/* Owner auth routes */}
+					<Stack.Screen name="Owner-email" component={OwnerEmail} />
+					<Stack.Screen name="Owner-password" component={OwnerSetPassword} />
+					<Stack.Screen
+						name="Owner-personal-info"
+						component={OwnerPersonalInfo}
+					/>
 				</Stack.Navigator>
 			</NavigationContainer>
 		</OnBoardingProvider>

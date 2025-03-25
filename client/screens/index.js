@@ -22,6 +22,9 @@ import PersonalInfo from "./user-screens/auth/personal.info.jsx";
 import SelectPreferences from "./user-screens/auth/select.preferences.jsx";
 import SetPassword from "./user-screens/auth/setPassword.jsx";
 import FinalStage from "./user-screens/auth/final.stage.jsx";
+import OwnerEmail from "./owner-screens/auth";
+import OwnerPersonalInfo from "./owner-screens/auth/personal.info.jsx";
+import OwnerSetPassword from "./owner-screens/auth/set.password.jsx";
 
 export {
 	/* user main screens */
@@ -54,5 +57,8 @@ export {
 	ForgotPassword,
 	ResetPassword,
 
-	/* Owner screens */
+	/* Owner auth routes */
+	OwnerEmail,
+	OwnerSetPassword,
+	OwnerPersonalInfo,
 };
