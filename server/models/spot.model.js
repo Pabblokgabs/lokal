@@ -7,6 +7,11 @@ const spotSchema = mongoose.Schema(
 			required: true,
 			trim: true,
 		},
+		modelType: {
+			type: String,
+			required: true,
+			default: "spot",
+		},
 		ownerId: {
 			type: mongoose.Schema.Types.ObjectId,
 			ref: "Owner",
@@ -32,7 +37,14 @@ const spotSchema = mongoose.Schema(
 		],
 		operationDayTime: [
 			{
-				type: String,
+				days: {
+					type: String,
+					required: true,
+				},
+				time: {
+					type: String,
+					required: true,
+				},
 			},
 		],
 		rating: {
@@ -78,13 +90,6 @@ const spotSchema = mongoose.Schema(
 					"religion",
 					"sport",
 				],
-			},
-		],
-		socialType: [
-			{
-				type: String,
-				required: true,
-				enum: ["group", "small_group", "solo"],
 			},
 		],
 		country: {

@@ -29,10 +29,10 @@ const TopBar = ({
 			style={{
 				flexDirection: "row",
 				alignItems: "center",
-				paddingVertical: py,
+				paddingVertical: py || 10,
 			}}
 		>
-			{isArrow && (
+			{isArrow || (
 				<TouchableOpacity onPress={arrowPress}>
 					<AntDesign name={backIcon} size={24} color={themeColor.icon} />
 				</TouchableOpacity>

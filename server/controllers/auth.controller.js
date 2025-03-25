@@ -32,12 +32,18 @@ export const sendingEmailOTP = async (res, req) => {
 };
 
 export const verifyOTP = async (res, req) => {
-	const [token, code] = req.body;
+	const [token, code, email] = req.body;
 
 	try {
 		const verifiedUser = jwt.verify(token, process.env.EMAIL_ACTIVATION_SECRET);
 
-		if (verifiedUser.token !== code) {
+		if (verifiedUser.email !== email)
+			return res.status(400).json({
+				success: false,
+				error: "Code is not correct",
+			});
+
+		if (verifiedUser.code !== code) {
 			return res.status(400).json({
 				success: false,
 				error: "Code is not correct or expired",

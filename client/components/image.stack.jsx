@@ -1,7 +1,7 @@
 import { View, FlatList, Image } from "react-native";
 import React from "react";
 
-function ImageStack({ images, height, width }) {
+function ImageStack({ images, height = 40, width = 40 }) {
 	return (
 		<FlatList
 			data={images.slice(0, 4)}
@@ -12,8 +12,8 @@ function ImageStack({ images, height, width }) {
 					<Image
 						source={require("../assets/images/img2.jpg")}
 						style={{
-							width: width || 40,
-							height: height || 40,
+							width: width,
+							height: height,
 							borderRadius: "50%",
 							resizeMode: "cover",
 						}}

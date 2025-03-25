@@ -19,9 +19,6 @@ const userSchema = mongoose.Schema(
 			type: String,
 			required: true,
 		},
-		age: {
-			type: Number,
-		},
 		password: {
 			type: String,
 			required: true,
@@ -52,31 +49,21 @@ const userSchema = mongoose.Schema(
 			default: 0,
 		},
 		preferences: {
-			activity: [
-				{
-					type: String,
-					enum: [
-						"foodie",
-						"wellness",
-						"creative",
-						"bar",
-						"restaurant",
-						"clubs",
-						"religion",
-					],
-				},
-			],
-			social: [
-				{
-					type: String,
-					enum: ["group", "small_group", "solo"],
-				},
+			type: String,
+			enum: [
+				"foodie",
+				"wellness",
+				"creative",
+				"bar",
+				"restaurant",
+				"clubs",
+				"religion",
 			],
 		},
 		role: {
 			type: String,
 			default: "user",
-			enum: ["user", "manager"],
+			enum: ["user", "organiser", "manager"],
 		},
 		following: [
 			{
@@ -88,7 +75,14 @@ const userSchema = mongoose.Schema(
 		favorite: [
 			{
 				type: mongoose.Schema.Types.ObjectId,
-				ref: "SpotPost",
+				ref: "event",
+				default: [],
+			},
+		],
+		joined: [
+			{
+				type: mongoose.Schema.Types.ObjectId,
+				ref: "event",
 				default: [],
 			},
 		],

@@ -1,6 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 
-const spotPostSchema = mongoose.Schema({
+const eventSchema = mongoose.Schema({
 	spotId: {
 		type: mongoose.Schema.Types.ObjectId,
 		ref: "Spot",
@@ -14,10 +14,15 @@ const spotPostSchema = mongoose.Schema({
 			type: Schema.Types.Mixed,
 		},
 	],
-	title: {
+	name: {
 		type: String,
 		trim: true,
 		required: true,
+	},
+	modelType: {
+		type: String,
+		required: true,
+		default: "event",
 	},
 	date: {
 		type: String,
@@ -27,28 +32,17 @@ const spotPostSchema = mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	eventStart: {
-		type: Date,
-		required: true,
-	},
-	eventEnd: {
-		type: Date,
-		required: true,
-	},
 	entrance: {
 		type: String,
 		enum: ["free", "ticket", "dress code"],
 		default: "free",
 	},
-	reactions: [
+	join: [
 		{
-			userId: {
+			user: {
 				type: mongoose.Schema.Types.ObjectId,
 				ref: "User",
-			},
-			reaction: {
-				type: String,
-				enum: ["like", "fire", "dislike"],
+				default: [],
 			},
 		},
 	],
@@ -59,6 +53,6 @@ const spotPostSchema = mongoose.Schema({
 	],
 });
 
-const SpotPost = mongoose.model("SpotPost", spotPostSchema);
+const Event = mongoose.model("Event", eventSchema);
 
-export default SpotPost;
+export default Event;

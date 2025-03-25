@@ -44,10 +44,9 @@ export const signUp = async (res, req) => {
 			code,
 		} = req.body;
 
-		/* verifying the code logic */
 		const verifiedUser = jwt.verify(token, process.env.EMAIL_ACTIVATION_SECRET);
 
-		if (verifiedUser.token !== code) {
+		if (verifiedUser.code !== code) {
 			return res.status(400).json({
 				success: false,
 				error: "Code is not correct or expired",
