@@ -19,7 +19,7 @@ export default function Manage() {
 	const [addModal, setAddModal] = useState(false);
 
 	return (
-		<>
+		<>	
 			<SearchUsers visible={addModal} setVisible={setAddModal} />
 			<View
 				style={[reusableStyles.wrapper, { backgroundColor: themeColor.bg }]}
