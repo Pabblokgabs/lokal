@@ -40,7 +40,7 @@ const ThemeChanger = ({ visible, setVisible }) => {
 						height: height,
 						width: width,
 						backgroundColor: themeColor.bg,
-						opacity: 0.5,
+						opacity: 0.7,
 					}}
 				/>
 				<View
@@ -48,14 +48,14 @@ const ThemeChanger = ({ visible, setVisible }) => {
 						width: "80%",
 						padding: 20,
 						backgroundColor: themeColor.secondBg,
+						borderRadius: 10
 					}}
 				>
 					<Text
-						style={{
+						style={[reusableStyles.header,{
 							textAlign: "center",
 							color: themeColor.text,
-							fontSize: 20,
-						}}
+						}]}
 					>
 						Change theme
 					</Text>
@@ -71,8 +71,8 @@ const ThemeChanger = ({ visible, setVisible }) => {
 						>
 							<View
 								style={{
-									height: 15,
-									width: 15,
+									height: 20,
+									width: 20,
 									borderRadius: "50%",
 									borderWidth: 0.5,
 									borderColor: themeColor.border,
@@ -80,7 +80,7 @@ const ThemeChanger = ({ visible, setVisible }) => {
 										theme === kgabs ? themeColor.btn : "transparent",
 								}}
 							/>
-							<Text style={{ marginLeft: 10, color: themeColor.text }}>
+							<Text style={[reusableStyles.text,{ marginLeft: 10, color: themeColor.text }]}>
 								{kgabs}
 							</Text>
 						</TouchableOpacity>

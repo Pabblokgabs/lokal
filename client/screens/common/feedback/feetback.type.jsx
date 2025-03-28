@@ -42,10 +42,8 @@ export function Report({ visible, setVisible }) {
 			<SafeAreaView style={{ flex: 1, backgroundColor: themeColor.bg }}>
 				<View style={[reusableStyles.wrapper, { paddingHorizontal: 15 }]}>
 					<TopBar
-						isArrow={true}
 						arrowPress={() => setVisible(false)}
 						title={"Report a problem"}
-						py={10}
 					/>
 					<View style={{ height: 20 }} />
 
@@ -102,13 +100,6 @@ export function Suggestion({ visible, setVisible }) {
 		console.log(formData);
 	};
 
-	const suggestOptions = [
-		{ label: "Choose one", value: "" },
-		{ label: "Suggest new feature", value: "Suggest new feature" },
-		{ label: "UX/Design", value: "UX/Design" },
-		{ label: "Others", value: "Others" },
-	];
-
 	return (
 		<Modal
 			isVisible={visible}
@@ -124,10 +115,8 @@ export function Suggestion({ visible, setVisible }) {
 			<SafeAreaView style={{ flex: 1, backgroundColor: themeColor.bg }}>
 				<View style={[reusableStyles.wrapper, { paddingHorizontal: 15 }]}>
 					<TopBar
-						isArrow={true}
 						arrowPress={() => setVisible(false)}
 						title={"Report a problem"}
-						py={10}
 					/>
 					<View style={{ height: 20 }} />
 
@@ -136,18 +125,6 @@ export function Suggestion({ visible, setVisible }) {
 						backgroundColor={themeColor.secondBg}
 						onChangeText={(text) => handleData("email", text)}
 					/>
-
-					<View style={{ height: 20 }} />
-
-					<TextInputContainer
-						inputHint={"Choose a topic *"}
-						backgroundColor={themeColor.secondBg}
-					>
-						<PickerComponent
-							items={suggestOptions}
-							onValueChange={(text) => handleData("option", text)}
-						/>
-					</TextInputContainer>
 
 					<View style={{ height: 20 }} />
 

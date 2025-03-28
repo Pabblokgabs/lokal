@@ -12,8 +12,8 @@ function Feedback() {
 	const themeColor = useTheme().colors;
 	const navigation = useNavigation();
 
-	const [suggestModal, setSuggestModal] = useState(false)
-	const [reportModal, setReportModal] = useState(false)
+	const [suggestModal, setSuggestModal] = useState(false);
+	const [reportModal, setReportModal] = useState(false);
 
 	return (
 		<SafeAreaView style={{ flex: 1, backgroundColor: themeColor.bg }}>
@@ -23,9 +23,7 @@ function Feedback() {
 			<View style={[reusableStyles.wrapper, { paddingHorizontal: 15 }]}>
 				<TopBar
 					title={"Send Feedback"}
-					isArrow={true}
 					arrowPress={() => navigation.goBack()}
-					py={10}
 				/>
 				<ScrollView>
 					<View style={{ height: 20 }} />

@@ -43,7 +43,7 @@ const TopBar = ({
 					flex: 1,
 					flexDirection: "row",
 					alignItems: "center",
-					marginLeft: isArrow && 15,
+					marginLeft: isArrow || 15,
 				}}
 			>
 				{title ? (
@@ -51,6 +51,7 @@ const TopBar = ({
 						style={[
 							reusableStyles.header,
 							{
+								flex: 1,
 								color: themeColor.text,
 								fontSize: 22,
 								fontWeight: fontWeight ? fontWeight : "700",

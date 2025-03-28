@@ -30,10 +30,8 @@ export default function ContactUs() {
 		<SafeAreaView style={{ flex: 1, backgroundColor: themeColor.bg }}>
 			<View style={[reusableStyles.wrapper, { paddingHorizontal: 15 }]}>
 				<TopBar
-					isArrow={true}
 					arrowPress={() => navigation.goBack()}
 					title={"Contact us"}
-					py={10}
 				/>
 
 				<ScrollView>

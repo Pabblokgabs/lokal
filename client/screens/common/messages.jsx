@@ -15,17 +15,13 @@ function Messages() {
 		<SafeAreaView style={{ felx: 1, backgroundColor: themeColor.bg }}>
 			<View style={reusableStyles.wrapper}>
 				<View style={{ paddingHorizontal: 15, marginBottom: 20 }}>
-					<TopBar
-						isArrow={true}
-						title={"Messages"}
-						arrowPress={() => navigation.goBack()}
-						py={10}
-					/>
+					<TopBar title={"Messages"} arrowPress={() => navigation.goBack()} />
 				</View>
 
 				<FlatList
 					data={[1, 2, 3, 4, 5, 6, 7, 8, , 9]}
 					keyExtractor={(item, index) => index}
+					showsVerticalScrollIndicator={false}
 					renderItem={({ item }) => (
 						<View style={{ marginBottom: 20, paddingHorizontal: 15 }}>
 							<UserView

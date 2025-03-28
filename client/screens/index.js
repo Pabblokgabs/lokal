@@ -25,6 +25,9 @@ import FinalStage from "./user-screens/auth/final.stage.jsx";
 import OwnerEmail from "./owner-screens/auth";
 import OwnerPersonalInfo from "./owner-screens/auth/personal.info.jsx";
 import OwnerSetPassword from "./owner-screens/auth/set.password.jsx";
+import OwnerTabNavigator from "./owner-screens/tab.screen/index.jsx";
+import EventDetails from "./owner-screens/event.details.jsx";
+import OwnerProfile from "./owner-screens/profile/index.jsx";
 
 export {
 	/* user main screens */
@@ -61,4 +64,9 @@ export {
 	OwnerEmail,
 	OwnerSetPassword,
 	OwnerPersonalInfo,
+
+	/* Owner screens */
+	OwnerTabNavigator,
+	EventDetails,
+	OwnerProfile,
 };

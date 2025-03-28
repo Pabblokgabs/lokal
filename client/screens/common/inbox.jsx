@@ -88,7 +88,11 @@ function Inbox() {
 		<SafeAreaView style={{ flex: 1, backgroundColor: themeColor.bg }}>
 			<View style={reusableStyles.wrapper}>
 				<View style={{ paddingHorizontal: 15 }}>
-					<TopBar isArrow={true} I_icon={"ellipsis-vertical"} py={20} arrowPress={() => navigation.goBack()}>
+					<TopBar
+						I_icon={"ellipsis-vertical"}
+						py={20}
+						arrowPress={() => navigation.goBack()}
+					>
 						<View
 							style={{ flexDirection: "row", alignItems: "center", gap: 10 }}
 						>

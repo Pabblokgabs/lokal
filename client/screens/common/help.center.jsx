@@ -21,11 +21,9 @@ function HelpCenter() {
 			<View style={[reusableStyles.wrapper]}>
 				<View style={{ paddingHorizontal: 15 }}>
 					<TopBar
-						py={10}
 						title={"Help Center"}
-						isArrow={true}
 						arrowPress={() => navigation.goBack()}
-            I_icon={'ellipsis-vertical'}
+						I_icon={"ellipsis-vertical"}
 					/>
 				</View>
 
@@ -81,7 +79,7 @@ function HelpCenter() {
 						))}
 					</View>
 
-          <View style={{ height: 20 }} />
+					<View style={{ height: 20 }} />
 
 					<RenderItem active={active} />
 				</ScrollView>

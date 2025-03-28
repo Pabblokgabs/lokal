@@ -20,7 +20,6 @@ function Notification() {
 					ListHeaderComponent={
 						<View style={{ paddingHorizontal: 15 }}>
 							<TopBar
-								isArrow={true}
 								title={"Notification"}
 								py={20}
 								arrowPress={() => navigation.goBack()}
