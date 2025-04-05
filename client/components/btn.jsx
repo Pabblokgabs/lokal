@@ -32,7 +32,7 @@ const Btn = ({
 				width: width,
 				borderWidth: borderWidth ? borderWidth : 1,
 				borderColor: borderColor ? borderColor : themeColor.btn,
-				opacity: opacity,
+				opacity: opacity ? opacity : disabled ? 0.5 : 1,
 			}}
 		>
 			<Text

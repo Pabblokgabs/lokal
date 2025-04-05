@@ -18,7 +18,6 @@ export const colors = {
 	blue1: "#2f80ec",
 	red: "#eb5757",
 
-
 	gray50: "#f9f9f9",
 	gray100: "#ececec",
 	gray150: "#F7F7F7",
@@ -33,4 +32,21 @@ export const colors = {
 	gray900: "#171717",
 	gray950: "#0d0d0d",
 	black: "#000",
+
+	icon: (
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			fill="none"
+			viewBox="0 0 24 24"
+			stroke-width="1.5"
+			stroke="currentColor"
+			class="size-6"
+		>
+			<path
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				d="M10.5 6h9.75M10.5 6a1.5 1.5 0 1 1-3 0m3 0a1.5 1.5 0 1 0-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m-9.75 0h9.75"
+			/>
+		</svg>
+	),
 };

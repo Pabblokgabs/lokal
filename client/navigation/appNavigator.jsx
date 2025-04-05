@@ -1,36 +1,41 @@
 import React, { useEffect, useState } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import AuthNavigator from "./auth.navigation";
 import UserMainNavigator from "./user.main.navigation";
 import OwnerMainNavigator from "./owner.main";
+import { useQuery } from "@tanstack/react-query";
+import LoadingSpinner from "../components/spinners/loading.spinner";
 
 function AppNavigator() {
-	const [isAuth, setIsAAuth] = useState(false);
-	const [userRole, setUserRole] = useState(null);
+	const [isAuth, setIsAuth] = useState(false);
 
-	/* useEffect(() => {
-		const checkAuth = async () => {
-			const token = AsyncStorage.getItem("accessToken");
+	/* const { data, isLoading } = useQuery({
+		queryKey: ["authUser"],
+		queryFn: async () => {
+			try {
+				const res = await fetch(`${process.env.SERVER_URI}/common/auth/me`);
 
-      if (token) {
-        setIsAAuth(true)
-      }
+				const data = await res.json();
 
-      const role = await AsyncStorage.getItem('role')
-      setUserRole(role)
-		};
-    checkAuth()
-	},[]); 
+				if (!res.ok) throw new Error(data.error || "something went wrong");
+			} catch (error) {
+				throw new Error(error);
+			}
+		},
+	});
 
-  if (!isAuth) return <AuthNavigator />
+	if (data) setIsAuth(true);
 
-  if (userRole === 'owner') {
-    return <OwnerMainNavigator />
-  } else {
-    return <UserMainNavigator />
-  } */
+	if (isLoading) return <LoadingSpinner />;
 
-    return <OwnerMainNavigator />
+	if (!isAuth) return <AuthNavigator />;
+
+	if (data.role === "owner") {
+		return <OwnerMainNavigator />;
+	} else {
+		return <UserMainNavigator />;
+	} */
+
+	return <AuthNavigator />;
 }
 
 export default AppNavigator;

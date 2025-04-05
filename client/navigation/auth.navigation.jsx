@@ -15,13 +15,13 @@ import {
 	OwnerSetPassword,
 	OwnerPersonalInfo,
 } from "../screens";
-import { OnBoardingProvider } from "../lib/hooks/useSignIn";
+import { AuthProvider } from "../lib/hooks/auth";
 
 const Stack = createStackNavigator();
 
 function AuthNavigator() {
 	return (
-		<OnBoardingProvider>
+		<AuthProvider>
 			<NavigationContainer>
 				<Stack.Navigator
 					screenOptions={{ headerShown: false, animationEnabled: false }}
@@ -48,7 +48,7 @@ function AuthNavigator() {
 					/>
 				</Stack.Navigator>
 			</NavigationContainer>
-		</OnBoardingProvider>
+		</AuthProvider>
 	);
 }
 

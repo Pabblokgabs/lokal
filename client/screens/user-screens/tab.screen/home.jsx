@@ -178,7 +178,7 @@ function Home() {
 
 					<TopBar
 						fontWeight={"600"}
-						isArrow={false}
+						isArrow={true}
 						title={"Preferences"}
 						textAlign={"left"}
 						py={20}
@@ -208,7 +208,7 @@ function Home() {
 
 					<TopBar
 						fontWeight={"600"}
-						isArrow={false}
+						isArrow={true}
 						title={"Recommended Spot"}
 						textAlign={"left"}
 						py={20}
@@ -234,7 +234,7 @@ function Home() {
 
 					<TopBar
 						fontWeight={"600"}
-						isArrow={false}
+						isArrow={true}
 						title={"Popular Events"}
 						textAlign={"left"}
 						py={20}

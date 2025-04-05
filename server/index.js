@@ -10,7 +10,6 @@ import userRoutes from "./routes/user.routes.js";
 import ownerAuthRoutes from "./routes/owner.auth.routes.js";
 import ownerRoutes from "./routes/owner.routes.js";
 import commonRoutes from "./routes/common.routes.js";
-import spotAuthRoutes from "./routes/spot.auth.routes.js";
 
 import connectMongoDB from "./lib/connectMongoDB.js";
 
@@ -37,8 +36,7 @@ app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/owner/auth", ownerAuthRoutes);
 app.use("/api/v1/owner", ownerRoutes);
-app.use("/api/v1/common", commonRoutes);
-app.use("/api/v1/spot/auth", spotAuthRoutes);
+app.use("/api/v1/common/auth", commonRoutes);
 
 app.listen(PORT, () => {
 	console.log(`app is running on port ${PORT}`);

@@ -14,9 +14,33 @@ const MustKnowSpot = () => {
 
 	return (
 		<View style={{ flexDirection: "column", gap: 20 }}>
-			<Text style={[reusableStyles.lgText, { color: themeColor.text }]}>
-				A MUST VISIT SPOT!
-			</Text>
+			<View style={{ flexDirection: "row", alignItems: "center", gap: 20 }}>
+				<Image
+					source={require("../../assets/hot.svg")}
+					style={{ height: 50, width: 40, resizeMode: "cover" }}
+				/>
+
+				<View style={{ justifyContent: "space-between" }}>
+					<View style={{ flexDirection: "row", alignItems: "center", gap: 20 }}>
+						<Text style={[reusableStyles.lgText, { color: themeColor.text }]}>
+							A MUST VISIT SPOT!
+						</Text>
+
+						<Image
+							source={require("../../assets/hot.svg")}
+							style={{ height: 25, width: 20 }}
+						/>
+					</View>
+
+					<Text
+						numberOfLines={1}
+						lineBreakMode="tail"
+						style={[reusableStyles.text, { color: themeColor.secondText }]}
+					>
+						A spot to put on your schedule
+					</Text>
+				</View>
+			</View>
 
 			<TouchableOpacity
 				onPress={() => navigation.navigate("spot-details", { item })}
@@ -29,10 +53,24 @@ const MustKnowSpot = () => {
 				<View
 					style={{
 						position: "absolute",
+						top: 0,
+						left: 0,
+						bottom: 0,
+						right: 0,
+						backgroundColor: themeColor.bg,
+						opacity: 0.5,
+						zIndex: 1,
+					}}
+				/>
+
+				<View
+					style={{
+						position: "absolute",
 						paddingHorizontal: 10,
 						top: 15,
 						width: "100%",
 						alignItems: "flex-end",
+						zIndex: 2
 					}}
 				>
 					<View
@@ -64,6 +102,7 @@ const MustKnowSpot = () => {
 						paddingHorizontal: 10,
 						bottom: 15,
 						gap: 10,
+						zIndex: 2
 					}}
 				>
 					<Text

@@ -1,4 +1,4 @@
-import { View, Text, FlatList, TouchableOpacity } from "react-native";
+import { View, Text, FlatList, TouchableOpacity, Image } from "react-native";
 import React, { useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useTheme } from "react-native-paper";
@@ -156,6 +156,18 @@ function Search() {
 					keyExtractor={(item) => item.reviewId}
 					showsVerticalScrollIndicator={false}
 					ListHeaderComponent={header}
+					ListEmptyComponent={() => (
+						<View
+							style={{
+								flex:1,
+								paddingHorizontal: 15,
+								alignItems: "center",
+								justifyContent: "center",
+							}}
+						>
+							<Image source={require("../../assets/search.svg")} />
+						</View>
+					)}
 					renderItem={({ item }) => (
 						<View style={{ paddingHorizontal: 15, marginBottom: 20 }}>
 							{renderItem(item)}

@@ -121,12 +121,77 @@ export const registration = async (res, req) => {
 	}
 };
 
-export const getMe = async (req, res) => {
+export const forgotPasswordEmail = async (res, req) => {
 	try {
-		const user = await User.findById(req.user._id).select("-password");
-		res.status(200).json(user);
+		const { email } = req.body;
+
+		const user = await User.findOne({ email });
+
+		if (!user)
+			return res.status(400).json({
+				success: false,
+				message: "User not found. Please create an account",
+			});
+
+		generateOTP(email, res);
 	} catch (error) {
-		console.log("Error in getMe controller", error.message);
-		res.status(500).json({ error: "Internal Server Error" });
+		console.log("Error in User forgotPasswordEmail controller", error.message);
+		res.status(500).json({ error: "Something went wrong. Please try again" });
+	}
+};
+
+export const verifyForgotPasswordCode = async (res, req) => {
+	const [token, code, email] = req.body;
+
+	try {
+		const verifiedUser = jwt.verify(
+			token,
+			process.env.EMAIL_ACTIVATION_SECRET
+		);
+
+		const user = await User.findOne({ email });
+
+		if (user.email !== verifiedUser.email)
+			return res.status(400).json({
+				success: false,
+				error: "Invalid token",
+			});
+
+		if (verifiedUser.code !== code) {
+			return res.status(400).json({
+				success: false,
+				error: "Code is not correct or expired",
+			});
+		} else {
+			res.status(201).json({
+				success: true,
+				message: "Code verified succesfull",
+			});
+		}
+	} catch (error) {
+		console.log(
+			"Error in User verifyForgotPasswordCode the otp controller",
+			error.message
+		);
+		res.status(500).json({ error: "Something went wrong. Please try again" });
+	}
+};
+
+export const resetPassword = async (res, req) => {
+	const { email, new_password } = req.body;
+
+	try {
+		const user = await User.findOne({ email });
+
+		const salt = await bcrypt.genSalt(10);
+		user.password = await bcrypt.hash(new_password, salt);
+
+		user = await user.save();
+		user.password = null;
+		return res.status(200).json(user);
+
+	} catch (error) {
+		console.log("Error in User resetPassword controller", error.message);
+		res.status(500).json({ error: "Something went wrong. Please try again" });
 	}
 };

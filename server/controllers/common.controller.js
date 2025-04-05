@@ -3,6 +3,27 @@ import User from "../models/user.model.js";
 import Owner from "../models/owner.model.js";
 import { generateTokenAndSetCookie } from "../lib/utils/generateTokenAndSetCookie.js";
 
+export const getMe = async (req, res) => {
+	try {
+		const owner = await Owner.findById(req.user._id).select("-password");
+		const user = await User.findById(req.user._id).select("-password");
+
+		if (!owner && !user)
+			return res.status(400).json({ error: "User not fount" });
+
+		if (!owner && user) {
+			res.status(200).json(user);
+		}
+
+		if (owner && !user) {
+			res.status(200).json(owner);
+		}
+	} catch (error) {
+		console.log("Error in getMe controller", error.message);
+		res.status(500).json({ error: "Internal Server Error" });
+	}
+};
+
 export const login = async (res, req) => {
 	try {
 		const { email, password } = req.body;

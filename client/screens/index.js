@@ -28,6 +28,8 @@ import OwnerSetPassword from "./owner-screens/auth/set.password.jsx";
 import OwnerTabNavigator from "./owner-screens/tab.screen/index.jsx";
 import EventDetails from "./owner-screens/event.details.jsx";
 import OwnerProfile from "./owner-screens/profile/index.jsx";
+import CreateEvent from "./owner-screens/create.event.jsx";
+import ListSpot from "./owner-screens/list.spot.jsx"
 
 export {
 	/* user main screens */
@@ -69,4 +71,6 @@ export {
 	OwnerTabNavigator,
 	EventDetails,
 	OwnerProfile,
+	CreateEvent,
+	ListSpot
 };

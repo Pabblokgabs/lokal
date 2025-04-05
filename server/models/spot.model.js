@@ -57,7 +57,7 @@ const spotSchema = mongoose.Schema(
 				ref: "Review",
 			},
 		],
-		decription: {
+		description: {
 			type: String,
 			trim: true,
 		},

@@ -16,11 +16,10 @@ export const registerSpot = async (req, res) => {
 		preferredAge,
 		preferredGender,
 		photos,
-		socialType,
 	} = req.body;
 
 	try {
-		const isOwner = await Spot.ownerId.findOne( req.user._id );
+		const isOwner = await Spot.ownerId.findById( req.user._id );
 
 		if (isOwner)
 			return res.status(400).json({ error: "User already register a spot" });
@@ -41,7 +40,6 @@ export const registerSpot = async (req, res) => {
 			preferredGender,
 			ownerId: req.user._id,
 			photos,
-			socialType,
 		});
 
 		if (newSpot) {

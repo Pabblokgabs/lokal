@@ -1,5 +1,5 @@
 import express from "express";
-import { protectedRoute } from "../middleware/protectRoute";
+import { protectedRoute } from "../middleware/protectRoute.js";
 import {
 	followUnfollow,
 	getSpotProfile,
@@ -12,7 +12,7 @@ import {
 	changePhoneNumber,
 	getEventDetails,
 	favorUnfavor,
-} from "../controllers/user.controller";
+} from "../controllers/user.controller.js";
 
 const router = express.Router();
 

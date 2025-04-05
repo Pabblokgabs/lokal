@@ -25,7 +25,7 @@ const ownerSchema = mongoose.Schema(
 			ref: "Spot",
 		},
 		IdNumber: {
-			type: number,
+			type: String,
 			required: true,
 			unique: true,
 		},

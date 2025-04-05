@@ -164,7 +164,7 @@ export const updateUserProfile = async (req, res) => {
 			user.password = await bcrypt.hash(new_password, salt);
 		}
 		user.user_name = user_name || user.user_name;
-		user.password = new_password || user.password;
+		user.password = user.password;
 		user.avatar = avatar || user.avatar;
 
 		user = await user.save();

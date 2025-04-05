@@ -5,6 +5,7 @@ import { useTheme } from "react-native-paper";
 import Home from "./home";
 import Menu from "./menu";
 import Manage from "./manage";
+import { Image } from "react-native";
 
 const Tab = createBottomTabNavigator();
 
