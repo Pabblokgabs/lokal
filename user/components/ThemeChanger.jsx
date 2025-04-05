@@ -8,7 +8,7 @@ import reusableStyles from "./reusable/styles";
 const themes = ["dark", "light"];
 
 const ThemeChanger = ({ visible, setVisible }) => {
-	const { theme, toggleTheme } = useContext(ThemeContext);
+	const { theme, toggleTheme } = useContext(ThemeContext);	
 	const themeColor = useTheme().colors;
 	const {height, width} = Dimensions.get('window')
 

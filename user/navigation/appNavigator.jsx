@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import AuthNavigator from "./auth.navigation";
-import UserMainNavigator from "./user.main.navigation";
+/* import UserMainNavigator from "./user.main.navigation";
 import OwnerMainNavigator from "./owner.main";
 import { useQuery } from "@tanstack/react-query";
-import LoadingSpinner from "../components/spinners/loading.spinner";
+import LoadingSpinner from "../components/spinners/loading.spinner"; */
 
 function AppNavigator() {
 	const [isAuth, setIsAuth] = useState(false);

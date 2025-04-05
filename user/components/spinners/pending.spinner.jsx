@@ -1,16 +1,8 @@
-import { Modal, View } from "react-native";
+import { Modal, Text, View } from "react-native";
 import React from "react";
-import {
-	BeatLoader,
-	ClipLoader,
-	DotLoader,
-	HashLoader,
-	PuffLoader,
-	PulseLoader,
-	SyncLoader,
-} from "react-spinners";
 import { useTheme } from "react-native-paper";
 import reusableStyles from "../reusable/styles";
+import Spinner from "react-native-spinkit";
 
 const PendingSpinner = ({ height, width }) => {
 	const themeColor = useTheme().colors;
@@ -39,12 +31,7 @@ const PendingSpinner = ({ height, width }) => {
 						right: 0
 					}}
 				/>
-				<ClipLoader
-					loading={true}
-					color={themeColor.btn}
-					height={height}
-					width={width}
-				/>
+			<Text>Pending...</Text>
 			</View>
 		</Modal>
 	);

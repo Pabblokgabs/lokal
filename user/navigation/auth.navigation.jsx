@@ -24,7 +24,13 @@ function AuthNavigator() {
 		<AuthProvider>
 			<NavigationContainer>
 				<Stack.Navigator
-					screenOptions={{ headerShown: false, animationEnabled: false }}
+					screenOptions={{
+						headerShown: false,
+						animationEnabled: false,
+						cardStyleInterpolator: () => ({
+							cardStyle: { opacity: 1 },
+						}),
+					}}
 				>
 					{/* Common screens auth routes */}
 					<Stack.Screen name="onboarding" component={OnBoarding} />

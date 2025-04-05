@@ -16,7 +16,6 @@ import {
 import { useMutation } from "@tanstack/react-query";
 import PendingSpinner from "../../../components/spinners/pending.spinner";
 import LoadingSpinner from "../../../components/spinners/loading.spinner";
-import { emailRegex } from "../../../lib/regex";
 
 function Email() {
 	const themeColor = useTheme().colors;
@@ -30,7 +29,7 @@ function Email() {
 	const [isLoading, setIsLoading] = useState(false);
 
 	useEffect(() => {
-		emailRegex(email, setEmailError);
+		/* emailRegex(email, setEmailError); */
 	});
 
 	useEffect(() => {
