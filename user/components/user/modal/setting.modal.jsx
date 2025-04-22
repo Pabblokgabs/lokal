@@ -28,7 +28,6 @@ function SettingModal({ visible, setVisible }) {
 			>
 				<View style={[reusableStyles.wrapper, {paddingHorizontal: 15}]}>
 					<TopBar
-						isArrow={true}
 						arrowPress={() => setVisible(false)}
 						title={"Settings"}
 						py={10}

@@ -64,7 +64,7 @@ const OwnerTabNavigator = () => {
 						<Ionicons
 							name={focused ? "home" : "home-outline"}
 							color={focused ? themecolor.btn : themecolor.icon}
-							size={30}
+							size={20}
 						/>
 					),
 				}}
@@ -86,7 +86,7 @@ const OwnerTabNavigator = () => {
 						<Ionicons
 							name={focused ? "location" : "location-outline"}
 							color={focused ? themecolor.btn : themecolor.icon}
-							size={30}
+							size={20}
 						/>
 					),
 				}}
@@ -108,7 +108,7 @@ const OwnerTabNavigator = () => {
 						<Ionicons
 							name={focused ? "person" : "person-outline"}
 							color={focused ? themecolor.btn : themecolor.icon}
-							size={30}
+							size={20}
 						/>
 					),
 				}}

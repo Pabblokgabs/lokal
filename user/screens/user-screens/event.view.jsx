@@ -334,7 +334,7 @@ function EventView() {
 												style={{
 													width: 40,
 													height: 40,
-													borderRadius: "50%",
+													borderRadius: 20,
 													resizeMode: "cover",
 												}}
 											/>
@@ -415,7 +415,7 @@ function EventView() {
 										height: 50,
 										width: 50,
 										resizeMode: "cover",
-										borderRadius: "50%",
+										borderRadius: 25,
 									}}
 								/>
 

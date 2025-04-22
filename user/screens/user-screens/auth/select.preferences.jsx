@@ -11,6 +11,7 @@ import {
 import Btn from "../../../components/btn";
 import TopBar from "../../../components/topBar";
 import { recommended } from "../../../lib/options";
+import styles from "./style";
 
 function SelectPreferences() {
 	const themeColor = useTheme().colors;
@@ -51,59 +52,34 @@ function SelectPreferences() {
 			<View style={[reusableStyles.wrapper, { paddingHorizontal: 15 }]}>
 				<TopBar arrowPress={() => navigation.goBack()} />
 
-				<Text
-					style={[
-						reusableStyles.lgHeader,
-						{
-							color: themeColor.text,
-							textAlign: "center",
-							marginTop: 30,
-						},
-					]}
-				>
+				<View style={{ height: 30 }} />
+
+				<Text style={[reusableStyles.lgHeader, styles.email_AD(colors.text)]}>
 					Select up to 3 Preferences
 				</Text>
 
 				<View style={{ height: 10 }} />
 
-				<Text
-					style={[
-						reusableStyles.text,
-						{
-							color: themeColor.secondText,
-							textAlign: "center",
-						},
-					]}
-				>
+				<Text style={[reusableStyles.text, styles.email_AD(colors.secondText)]}>
 					Personalize Your Event Journey and Spot Discovery by Chossing Your
 					Preferences
 				</Text>
 
 				<View style={{ flex: 1, marginVertical: 50 }}>
-					<View
-						style={{
-							flexDirection: "row",
-							flexWrap: "wrap",
-							gap: 15,
-						}}
-					>
+					<View style={styles.SP_Container}>
 						{recommended.map((item) => (
 							<Pressable
 								key={item.value}
 								onPress={() => handleSelect(item.value)}
-								style={{
-									flexDirection: "row",
-									alignItems: "center",
-									gap: 10,
-									backgroundColor: themeColor.cont,
-									borderRadius: 20,
-									paddingHorizontal: 13,
-									paddingVertical: 8,
-									borderWidth: 1,
-									borderColor: preference.includes(item.value)
-										? themeColor.btn
-										: themeColor.cont,
-								}}
+								style={[
+									styles.select_Pressable,
+									{
+										backgroundColor: themeColor.cont,
+										borderColor: preference.includes(item.value)
+											? themeColor.btn
+											: themeColor.cont,
+									},
+								]}
 							>
 								{item.icon}
 								<Text

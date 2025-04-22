@@ -86,6 +86,26 @@ const userSchema = mongoose.Schema(
 				default: [],
 			},
 		],
+		isNotification: {
+			type: Boolean,
+			default: true,
+		},
+		isFavouriteNotification: {
+			type: Boolean,
+			default: true,
+		},
+		isNearByEventsNotification: {
+			type: Boolean,
+			default: true,
+		},
+		isNearBySpotNotification: {
+			type: Boolean,
+			default: true,
+		},
+		isOverAllNotification: {
+			type: Boolean,
+			default: true,
+		},
 	},
 	{ timestanps: true }
 );

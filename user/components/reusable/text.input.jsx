@@ -205,6 +205,7 @@ const TextInputContainer = ({
 						onChangeText={onChangeText}
 						secureTextEntry={secureTextEntry}
 						keyboardType={KeyboardType ? KeyboardType : "default"}
+						placeholderTextColor={themeColor.secondText}
 						style={[
 							styles.textInput(
 								width,
@@ -228,7 +229,7 @@ const TextInputContainer = ({
 						style={{
 							marginLeft: 15,
 							padding: 2,
-							borderRadius: "50%",
+							borderRadius: 12,
 							borderWidth: 1,
 							borderColor: themeColor.btn,
 						}}
@@ -250,7 +251,7 @@ const styles = StyleSheet.create({
 		outlineStyle: "none",
 		shadowColor: "transparent",
 		fontSize: fontSize ? fontSize : 16,
-		marginBottom: fontSize ? 0 : 5,
+		marginBottom: 0,
 		width: width ? width : "100%",
 		color: color,
 		backgroundColor: "transparent",

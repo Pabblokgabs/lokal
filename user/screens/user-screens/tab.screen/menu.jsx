@@ -40,11 +40,11 @@ export default function Menu() {
 	});
 
 	return (
-		<SafeAreaView>
+		<SafeAreaView style={{flex: 1, backgroundColor: themeColor.bg }}>
 			<SettingModal visible={settings} setVisible={setSettings} />
 
 			<View
-				style={[reusableStyles.wrapper, { backgroundColor: themeColor.bg }]}
+				style={[reusableStyles.wrapper]}
 			>
 				<View style={{ paddingHorizontal: 15 }}>
 					<TopBar
@@ -52,6 +52,7 @@ export default function Menu() {
 						A_icon={"setting"}
 						py={20}
 						A_press={() => setSettings(true)}
+						isArrow={true}
 					/>
 				</View>
 
@@ -73,7 +74,7 @@ export default function Menu() {
 								height: 80,
 								width: 80,
 								resizeMode: "cover",
-								borderRadius: "50%",
+								borderRadius: 40,
 							}}
 						/>
 						<View

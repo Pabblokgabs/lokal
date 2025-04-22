@@ -11,6 +11,8 @@ import {
 import Btn from "../../../components/btn";
 import TopBar from "../../../components/topBar";
 import TextInputContainer from "../../../components/reusable/text.input";
+import { passwordRegex } from "../../../lib/regex";
+import styles from "./style";
 
 function SetPassword() {
 	const themeColor = useTheme().colors;
@@ -18,7 +20,7 @@ function SetPassword() {
 
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
-	const [passwordError, setPasswordError] = useState(null);
+	const [passwordError, setPasswordError] = useState("");
 	const [confirmPasswordError, setConfirmPasswordError] = useState(null);
 
 	useEffect(() => {
@@ -32,16 +34,7 @@ function SetPassword() {
 	const handlePasswordChange = (text) => {
 		setPassword(text);
 
-		const passwordRegex = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$/;
-
-		if (!passwordRegex.test(password)) {
-			return setPasswordError(
-				"Password must container letters, number, and special characters and it must be at least 8 characters"
-			);
-		} else {
-			setPasswordError(null);
-			setPassword(text);
-		}
+		passwordRegex(text, setPasswordError);
 	};
 
 	const handleConfirmPasswordChange = (text) => {
@@ -70,43 +63,18 @@ function SetPassword() {
 			<View style={[reusableStyles.wrapper, { paddingHorizontal: 15 }]}>
 				<TopBar arrowPress={() => navigation.goBack()} py={10} />
 
-				<Text
-					style={[
-						reusableStyles.lgHeader,
-						{
-							color: themeColor.text,
-							textAlign: "center",
-							marginTop: 50,
-						},
-					]}
-				>
+				<View style={{ height: 50 }} />
+
+				<Text style={[reusableStyles.lgHeader, styles.email_AD(colors.text)]}>
 					Set Password
 				</Text>
 
 				<View style={{ height: 10 }} />
 
-				<Text
-					style={[
-						reusableStyles.text,
-						{
-							color: themeColor.secondText,
-							textAlign: "center",
-						},
-					]}
-				>
+				<Text style={[reusableStyles.text, styles.email_AD(colors.secondText)]}>
 					Password must container letters, number, and special characters and it
 					must be at least 8 characters
 				</Text>
-
-				<Text
-					style={[
-						reusableStyles.text,
-						{
-							color: themeColor.secondText,
-							textAlign: "center",
-						},
-					]}
-				></Text>
 
 				<View style={{ height: 20 }} />
 

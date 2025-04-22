@@ -39,7 +39,7 @@ const LinkTile = ({ value, onPress, title, A_icon, I_icon, M_icon }) => {
 				)}
 				<Text
 					style={[
-						reusableStyles.header,
+						reusableStyles.text,
 						{ color: themeColor.text, fontWeight: "semibold" },
 					]}
 				>

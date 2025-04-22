@@ -75,7 +75,7 @@ export default function Menu() {
 								height: 80,
 								width: 80,
 								resizeMode: "cover",
-								borderRadius: "50%",
+								borderRadius: 40,
 							}}
 						/>
 						<View

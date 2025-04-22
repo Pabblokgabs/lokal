@@ -14,7 +14,7 @@ function ImageStack({ images, height = 40, width = 40 }) {
 						style={{
 							width: width,
 							height: height,
-							borderRadius: "50%",
+							borderRadius: height/2,
 							resizeMode: "cover",
 						}}
 					/>

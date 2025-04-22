@@ -8,14 +8,6 @@ export const sendingEmailOTP = async (res, req) => {
 	try {
 		const { email } = req.body;
 
-		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-		if (!emailRegex.test(email)) {
-			return res
-				.status(400)
-				.json({ success: false, error: "Invalid email format" });
-		}
-
 		const existingEmail = await User.findOne({ email });
 
 		if (existingEmail) {
@@ -40,7 +32,7 @@ export const verifyOTP = async (res, req) => {
 		if (verifiedUser.email !== email)
 			return res.status(400).json({
 				success: false,
-				error: "Code is not correct",
+				error: "Something went wrong. Invalide token",
 			});
 
 		if (verifiedUser.code !== code) {

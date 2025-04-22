@@ -99,7 +99,7 @@ function Inbox() {
 							<Image
 								source={require("../../assets/images/img.jpg")}
 								style={{
-									borderRadius: "50%",
+									borderRadius: 20,
 									height: 40,
 									width: 40,
 									resizeMode: "cover",

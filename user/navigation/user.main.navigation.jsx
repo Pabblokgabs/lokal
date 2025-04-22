@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import {
@@ -18,14 +18,33 @@ import {
 	Recommended,
 	Messages,
 } from "../screens";
+import { StatusBar } from "react-native";
+import { ThemeContext } from "../lib/ThemeContext";
+import { useTheme } from "react-native-paper";
 
 const Stack = createStackNavigator();
 
 function UserMainNavigator() {
+  const { theme } = useContext(ThemeContext);
+		const themeColor = useTheme().colors; 
+	
+
+
 	return (
 		<NavigationContainer>
+			<StatusBar
+				barStyle={theme === "dark" ? "light-content" : "dark-content"}
+				backgroundColor={theme === "dark" ? themeColor.bg : themeColor.secondBg}
+				translucent={false}
+			/>
 			<Stack.Navigator
-				screenOptions={{ headerShown: false, animationEnabled: false }}
+				screenOptions={{
+					headerShown: false,
+					animationEnabled: false,
+					cardStyleInterpolator: () => ({
+						cardStyle: { opacity: 1 },
+					}),
+				}}
 			>
 				<Stack.Screen name="main" component={BottomTabNavigator} />
 				<Stack.Screen name="preference" component={Preference} />

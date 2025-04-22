@@ -22,8 +22,8 @@ const Tab = createBottomTabNavigator();
 }; */
 
 const tabBarStyles = {
-	padding: 20,
-	paddingBottom: 30,
+	padding: 0,
+	paddingBottom: 10,
 	height: 80,
 	position: "absolute",
 	bottom: 0,
@@ -48,7 +48,7 @@ const BottomTabNavigator = () => {
 			tabBarHideKeyboard={true}
 			headerShown={false}
 			inactiveColor={themecolor.icon}
-			barStyle={{ paddingBottom: 48 }}
+			barStyle={{ paddingBottom: 8 }}
 		>
 			<Tab.Screen
 				name="Home"
@@ -66,7 +66,7 @@ const BottomTabNavigator = () => {
 						<Ionicons
 							name={focused ? "grid" : "grid-outline"}
 							color={focused ? themecolor.btn : themecolor.icon}
-							size={30}
+							size={24}
 						/>
 					),
 				}}
@@ -88,7 +88,7 @@ const BottomTabNavigator = () => {
 						<Ionicons
 							name={focused ? "location" : "location-outline"}
 							color={focused ? themecolor.btn : themecolor.icon}
-							size={30}
+							size={24}
 						/>
 					),
 				}}
@@ -110,7 +110,7 @@ const BottomTabNavigator = () => {
 						<Ionicons
 							name={focused ? "heart" : "heart-outline"}
 							color={focused ? themecolor.btn : themecolor.icon}
-							size={30}
+							size={24}
 						/>
 					),
 				}}
@@ -132,7 +132,7 @@ const BottomTabNavigator = () => {
 						<Ionicons
 							name={focused ? "person" : "person-outline"}
 							color={focused ? themecolor.btn : themecolor.icon}
-							size={30}
+							size={24}
 						/>
 					),
 				}}

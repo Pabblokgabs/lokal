@@ -6,6 +6,8 @@ import { spot } from "../../lib/dommyData";
 import reusableStyles from "../reusable/styles";
 import { Ionicons } from "@expo/vector-icons";
 
+/* import HotSvg from "../../assets/hot.svg"; */
+
 const MustKnowSpot = () => {
 	const themeColor = useTheme().colors;
 	const navigation = useNavigation();
@@ -15,10 +17,7 @@ const MustKnowSpot = () => {
 	return (
 		<View style={{ flexDirection: "column", gap: 20 }}>
 			<View style={{ flexDirection: "row", alignItems: "center", gap: 20 }}>
-				<Image
-					source={require("../../assets/hot.svg")}
-					style={{ height: 50, width: 40, resizeMode: "cover" }}
-				/>
+				{/* <HotSvg width={20} height={25} /> */}
 
 				<View style={{ justifyContent: "space-between" }}>
 					<View style={{ flexDirection: "row", alignItems: "center", gap: 20 }}>
@@ -26,10 +25,7 @@ const MustKnowSpot = () => {
 							A MUST VISIT SPOT!
 						</Text>
 
-						<Image
-							source={require("../../assets/hot.svg")}
-							style={{ height: 25, width: 20 }}
-						/>
+						{/* <HotSvg width={20} height={25} /> */}
 					</View>
 
 					<Text
@@ -70,7 +66,7 @@ const MustKnowSpot = () => {
 						top: 15,
 						width: "100%",
 						alignItems: "flex-end",
-						zIndex: 2
+						zIndex: 2,
 					}}
 				>
 					<View
@@ -102,7 +98,7 @@ const MustKnowSpot = () => {
 						paddingHorizontal: 10,
 						bottom: 15,
 						gap: 10,
-						zIndex: 2
+						zIndex: 2,
 					}}
 				>
 					<Text

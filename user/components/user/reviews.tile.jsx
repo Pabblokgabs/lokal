@@ -23,7 +23,7 @@ export default ReviewTile = ({ data }) => {
 						style={{
 							height: 40,
 							width: 40,
-							borderRadius: "50%",
+							borderRadius: 20,
 							resizeMode: "cover",
 						}}
 					/>

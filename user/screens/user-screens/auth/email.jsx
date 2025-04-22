@@ -8,7 +8,6 @@ import TopBar from "../../../components/topBar";
 import TextInputContainer from "../../../components/reusable/text.input";
 import Btn from "../../../components/btn";
 import OTPVerificationComponent from "../../../components/OTP.verification";
-import Constants from 'expo-constants';
 import {
 	getRegistrationProgress,
 	saveRegistrationProgress,
@@ -16,33 +15,32 @@ import {
 import { useMutation } from "@tanstack/react-query";
 import PendingSpinner from "../../../components/spinners/pending.spinner";
 import LoadingSpinner from "../../../components/spinners/loading.spinner";
+import Toast from "react-native-toast-message";
+import { emailRegex } from "../../../lib/regex";
+import styles from "./style";
 
 function Email() {
-	const themeColor = useTheme().colors;
+	const { colors } = useTheme();
 	const navigation = useNavigation();
 
 	const [active, setActive] = useState("email");
 	const [email, setEmail] = useState("");
-	const [emailError, setEmailError] = useState(null);
+	const [emailError, setEmailError] = useState("");
 	const [code, setCode] = useState(null);
 	const [token, setToken] = useState(null);
 	const [isLoading, setIsLoading] = useState(false);
 
 	useEffect(() => {
-		/* emailRegex(email, setEmailError); */
-	});
+		emailRegex(email, setEmailError);
+	}, [email]);
 
 	useEffect(() => {
 		getRegistrationProgress("Email").then((progressData) => {
-			if (progressData) {
-				console.log(progressData);
-
+			if (progressData && progressData.email) {
 				setEmail(progressData.email);
 			}
 		});
-	}, [email]);
-
-	console.log(Constants.manifest.extra.SERVER_URI);
+	}, []);
 
 	const handlePersonal = () => {
 		setIsLoading(true);
@@ -73,17 +71,26 @@ function Email() {
 				return data;
 			} catch (error) {
 				console.error(error);
+				Toast.show({
+					type: "error",
+					text1: "Error",
+					text2: error.message || "Something went wrong. Please try again.",
+				});
 			}
 		},
 
-		onSuccess: () => {
+		onSuccess: (data) => {
 			if (email.trim() !== "") {
 				saveRegistrationProgress("Email", { email });
 			}
 
 			setToken(data.token);
-
 			setActive("otp");
+			Toast.show({
+				type: "success",
+				text1: "Success",
+				text2: "Verification email sent!",
+			});
 		},
 	});
 
@@ -116,23 +123,49 @@ function Email() {
 				return data;
 			} catch (error) {
 				console.error(error);
+				Toast.show({
+					type: "error",
+					text1: "Verification Failed",
+					text2: error.message || "Invalid code or error occurred.",
+				});
 			}
 		},
 
 		onSuccess: () => {
 			navigation.navigate("personal-information");
-
 			setActive("email");
 			handlePersonal();
+			Toast.show({
+				type: "success",
+				text1: "Verification Successful",
+				text2: "You are successfully verified!",
+			});
 		},
 	});
 
 	const handleNext = () => {
+		if (!email || emailError) {
+			Toast.show({
+				type: "error",
+				text1: "Invalid Email",
+				text2: "Please enter a valid email address.",
+			});
+			return;
+		}
 		mutate(email);
 	};
 
 	const handleVerify = () => {
-		handleCode(code, email, token);
+		if (!token || !code || !email) {
+			setEmailError("Please check your email and code.");
+			Toast.show({
+				type: "error",
+				text1: "Verification Error",
+				text2: "Please provide a valid email and code.",
+			});
+			return;
+		}
+		handleCode({ code, email, token });
 	};
 
 	return (
@@ -140,20 +173,17 @@ function Email() {
 			{isLoading ? (
 				<LoadingSpinner />
 			) : (
-				<SafeAreaView style={{ flex: 1, backgroundColor: themeColor.bg }}>
+				<SafeAreaView style={{ flex: 1, backgroundColor: colors.bg }}>
 					<View style={[reusableStyles.wrapper, { paddingHorizontal: 15 }]}>
 						{active === "email" ? (
 							<>
 								<TopBar arrowPress={() => navigation.goBack()} />
+								<View style={{ height: 50 }} />
 
 								<Text
 									style={[
 										reusableStyles.lgHeader,
-										{
-											color: themeColor.text,
-											textAlign: "center",
-											marginTop: 50,
-										},
+										styles.email_AD(colors.text),
 									]}
 								>
 									Email address:
@@ -164,13 +194,10 @@ function Email() {
 								<Text
 									style={[
 										reusableStyles.text,
-										{
-											color: themeColor.secondText,
-											textAlign: "center",
-										},
+										styles.email_AD(colors.secondText),
 									]}
 								>
-									Verification code will be sent to this email, Please make sure
+									Verification code will be sent to this email. Please make sure
 									it is valid.
 								</Text>
 
@@ -183,12 +210,11 @@ function Email() {
 									onChangeText={(text) => setEmail(text)}
 									value={email}
 								/>
-
 								{emailError && (
 									<Text
 										style={[
 											reusableStyles.otherText,
-											{ color: themeColor.red },
+											{ color: colors.red },
 										]}
 									>
 										{emailError}
@@ -199,19 +225,19 @@ function Email() {
 
 								<Btn
 									text={isPending ? "Loading..." : "Next"}
-									onPress={() => handleNext()}
+									onPress={() => setActive("code")}
 								/>
 
 								<View style={{ height: 20 }} />
 
 								<Text
-									style={{
-										color: themeColor.secondText,
-										textAlign: "center",
-									}}
+									style={[
+										reusableStyles.text,
+										styles.email_AD(colors.secondText),
+									]}
 								>
-									By signing Up, you agree to the terms of services and privacy
-									and privacy policy.
+									By signing up, you agree to the terms of services and privacy
+									policy.
 								</Text>
 							</>
 						) : (
@@ -222,18 +248,18 @@ function Email() {
 									isBtn={true}
 									email={email}
 									setCode={(text) => setCode(text)}
-									onBtnPress={() => handleVerify()}
+									onBtnPress={() => navigation.navigate("personal-information")}
 									code={code}
 								/>
 							</>
 						)}
 					</View>
-
 					{(isPending || codePending) && (
 						<PendingSpinner width={150} height={150} />
 					)}
 				</SafeAreaView>
 			)}
+			<Toast />
 		</>
 	);
 }

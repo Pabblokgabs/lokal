@@ -88,7 +88,7 @@ function AddNewMember({ visible, setVisible, email, emailModal, setWarning }) {
 									height: 50,
 									width: 50,
 									resizeMode: "cover",
-									borderRadius: "50%",
+									borderRadius: 25,
 								}}
 							/>
 

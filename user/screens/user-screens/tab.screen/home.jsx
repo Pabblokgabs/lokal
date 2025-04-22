@@ -95,7 +95,8 @@ function Home() {
 									style={{
 										height: 45,
 										width: 45,
-										borderRadius: "50%",
+										borderRadius: 22.5,
+										resizeMode: "cover",
 										backgroundColor: themeColor.cont,
 									}}
 								/>
@@ -119,11 +120,11 @@ function Home() {
 								borderRadius: 10,
 								borderWidth: 0.5,
 								borderColor: themeColor.border,
-								height: "100%",
-								padding: 15,
 								flexDirection: "row",
 								alignItems: "center",
 								gap: 10,
+								height: "100%",
+								paddingHorizontal: 15,
 								backgroundColor: themeColor.secondBg,
 							}}
 						>

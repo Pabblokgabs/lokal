@@ -224,7 +224,7 @@ function SpotDetails() {
 										resizeMode: "cover",
 										height: 150,
 										width: 150,
-										borderRadius: "100%",
+										borderRadius: 75,
 									}}
 								/>
 							</Pressable>

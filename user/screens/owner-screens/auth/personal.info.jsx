@@ -137,7 +137,7 @@ function OwnerPersonalInfo() {
 										height: 150,
 										width: 150,
 										resizeMode: "cover",
-										borderRadius: "50%",
+										borderRadius: 75,
 									}}
 								/>
 								<View

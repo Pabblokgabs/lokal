@@ -8,6 +8,8 @@ import reusableStyles from "../../../components/reusable/styles";
 import TopBar from "../../../components/topBar";
 import Btn from "../../../components/btn";
 import { getRegistrationProgress } from "../../../lib/utils/registration.utils";
+import { useMutation } from "@tanstack/react-query";
+import Toast from "react-native-toast-message";
 
 export default function FinalStage() {
 	const navigation = useNavigation();
@@ -52,7 +54,41 @@ export default function FinalStage() {
 		}
 	};
 
-	const handleSubmit = () => {};
+	const { mutate, isError, isPending, error } = useMutation({
+		mutationFn: async ({}) => {
+			try {
+				const res = await fetch(`${process.env.SERVER_URI}/auth/register`, {
+					method: "POST",
+					headers: {
+						"content-Type": "application/json",
+					},
+					body: JSON.stringify({}),
+				});
+
+				if (!res.ok) throw new Error(data.error || "something went wrong");
+
+				if (data.error) {
+					throw new Error(data.error);
+				}
+
+				return data;
+			} catch (error) {
+				console.error(error);
+				Toast.show({
+					type: "error",
+					text1: "Error",
+					text2: error.message || "Something went wrong. Please try again.",
+				});
+			}
+		},
+		onSuccess: () => {
+			clearAllScreenData();
+		},
+	});
+
+	const handleSubmit = () => {
+		mutate(userData);
+	};
 
 	return (
 		<SafeAreaView style={{ flex: 1, backgroundColor: themeColor.bg }}>
@@ -74,7 +110,7 @@ export default function FinalStage() {
 					You are all set for registration!
 				</Text>
 
-				<Text
+				{/* <Text
 					style={[
 						reusableStyles.lgHeader,
 						{
@@ -84,6 +120,28 @@ export default function FinalStage() {
 					]}
 				>
 					Setting up your profile for you...
+				</Text> */}
+
+				<View style={{ height: 20 }} />
+
+				<Text
+					style={[
+						reusableStyles.text,
+						{
+							color: themeColor.text,
+							fontSize: 20,
+						},
+					]}
+				>
+					By pressing 'Submit', you agree to create an account and to our{" "}
+					<Text onPress={() => {}} style={{ color: themeColor.link }}>
+						Terms of Service
+					</Text>{" "}
+					and{" "}
+					<Text onPress={() => {}} style={{ color: themeColor.link }}>
+						Privacy Policy
+					</Text>
+					, which include our commitment to protect your data
 				</Text>
 
 				<View style={{ height: 20 }} />
@@ -97,16 +155,12 @@ export default function FinalStage() {
 						},
 					]}
 				>
-					By pressing 'Submit', you acknoledge that you have read and agree to
-					our{" "}
-					<Text onPress={() => {}} style={{ color: themeColor.link }}>
-						Terms of Service
-					</Text>{" "}
-					and{" "}
+					The{" "}
 					<Text onPress={() => {}} style={{ color: themeColor.link }}>
 						Privacy Policy
 					</Text>
-					, which include our commitment to protect your data
+					describes the ways we use the information we collecte when you you
+					create an account
 				</Text>
 
 				<View style={{ flex: 1 }} />

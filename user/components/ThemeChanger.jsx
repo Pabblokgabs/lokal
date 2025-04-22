@@ -73,7 +73,7 @@ const ThemeChanger = ({ visible, setVisible }) => {
 								style={{
 									height: 20,
 									width: 20,
-									borderRadius: "50%",
+									borderRadius: 10,
 									borderWidth: 0.5,
 									borderColor: themeColor.border,
 									backgroundColor:

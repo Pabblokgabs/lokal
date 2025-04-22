@@ -412,7 +412,7 @@ export default function Manage() {
 										height: 50,
 										width: 50,
 										resizeMode: "cover",
-										borderRadius: "50%",
+										borderRadius: 25,
 									}}
 								/>
 

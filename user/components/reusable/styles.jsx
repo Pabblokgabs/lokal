@@ -49,7 +49,7 @@ const reusableStyles = StyleSheet.create({
 	dot: {
 		width: 5,
 		height: 5,
-		borderRadius: "50%",
+		borderRadius: 2.5,
 		flexDirection: "row",
 		alignItems: "center",
 	},

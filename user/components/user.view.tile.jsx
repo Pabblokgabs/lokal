@@ -28,7 +28,7 @@ const UserView = ({ item, onPress, isBorder }) => {
 					width: 50,
 					height: 50,
 					resizeMode: "cover",
-					borderRadius: "50%",
+					borderRadius: 25,
 				}}
 			/>
 			<View
