@@ -1,6 +1,6 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons, Entypo } from "@expo/vector-icons";
 import { useTheme } from "react-native-paper";
 import Home from "./home";
 import Menu from "./menu";
@@ -22,8 +22,7 @@ const Tab = createBottomTabNavigator();
 
 const tabBarStyles = {
 	padding: 20,
-	paddingBottom: 30,
-	height: 80,
+	height: 50,
 	position: "absolute",
 	bottom: 0,
 	left: 0,
@@ -83,10 +82,11 @@ const OwnerTabNavigator = () => {
 					tabBarShowLabel: false,
 					headerShown: false,
 					tabBarIcon: ({ focused }) => (
-						<Ionicons
-							name={focused ? "location" : "location-outline"}
+						<Entypo
+							name={'sound-mix'}
 							color={focused ? themecolor.btn : themecolor.icon}
 							size={20}
+							style={{transform: [{ rotate: '90deg' }]}}
 						/>
 					),
 				}}

@@ -35,7 +35,7 @@ function AppNavigator() {
 		return <UserMainNavigator />;
 	} */
 
-	return <UserMainNavigator />;
+	return <OwnerMainNavigator />;
 }
 
 export default AppNavigator;

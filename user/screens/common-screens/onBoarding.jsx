@@ -8,6 +8,7 @@ import reusableStyles from "../../components/reusable/styles";
 import Btn from "../../components/btn";
 import { AuthContext } from "../../lib/hooks/auth";
 import LoadingSpinner from "../../components/spinners/loading.spinner";
+import { Image } from "react-native";
 
 const OnBoarding = () => {
 	const themeColor = useTheme().colors;
@@ -34,7 +35,16 @@ const OnBoarding = () => {
 			) : (
 				<SafeAreaView style={{ flex: 1, backgroundColor: themeColor.bg }}>
 					<View style={reusableStyles.wrapper}>
-						<View style={{ flex: 1 }} />
+						<View style={{ flex: 1 }}>
+							<Image
+								source={require("../../assets/ellustrations/2.png")}
+								style={{
+									width: "100%",
+									height: "100%",
+									resizeMode: "contain",
+								}}
+							/>
+						</View>
 						<View style={{ marginBottom: 20, gap: 10, paddingHorizontal: 15 }}>
 							<Text
 								style={[
